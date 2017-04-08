@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('layout.layout');
+
+Route::group(['middleware'=>'web'], function (){
+  Route::get('/',  'PrincipalController@home');
+  Route::get('/repositorio',  'PrincipalController@home');
+  Route::get('/about',  'PrincipalController@home');
+  Route::get('/contact',  'PrincipalController@home');
 });
