@@ -10,4 +10,9 @@ class PrincipalController extends Controller
     {
         return view('principal.home');
     }
+
+    public function admin()
+    {
+      return view('principal.administrator');
+    }
 }

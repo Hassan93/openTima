@@ -7,7 +7,7 @@
 				@include('partials._horizontalnav')
 				<div id="container">
 					<main id="center" class="column">
-						@yield('message')
+						@include('partials._messages')
 						@yield('content')
 					</main>
 					<div id="left" class="column">

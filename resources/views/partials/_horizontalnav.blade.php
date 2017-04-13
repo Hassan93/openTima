@@ -24,9 +24,19 @@
 						<li class="{{Request::is('contact') ? "active": ""}}"><a href="/contact"><strong>Contacte-nos</strong></a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#"><button class="btn btn-success glyphicon glyphicon-lock"><strong>Sign in</strong></button></a></li>
-						<li><a href="#"><button class="btn btn-success glyphicon glyphicon-user"><strong>Sign up</strong></button></a></li>
-					</ul>
+            @if(Sentinel::check())
+                <li class="dropdown">
+                     <a href="/logout" class="dropdown-toggle glyphicon glyphicon-user" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{Sentinel::getUser()->last_name}}<span class="caret"></span></a>
+                     <ul class="dropdown-menu">
+                       <li><a href="#">Meu perfil</a></li>
+                       <li><a href="{{url('/logout')}}">Logout</a></li>
+                     </ul>
+                 </li>
+               @else
+               <li><a href="/login"><button class="btn btn-success glyphicon glyphicon-lock"><strong>Sign in</strong></button></a></li>
+               <li><a href="#"><button class="btn btn-success glyphicon glyphicon-user"><strong>Sign up</strong></button></a></li>
+               @endif
+						</ul>
 					{{--<form class="navbar-form navbar-left">
 						<div class="form-group">
 							<input type="text" class="form-control" placeholder="Pesquisar">
