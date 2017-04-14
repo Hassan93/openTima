@@ -15,12 +15,12 @@ class UsuariosController extends Controller
 public function registaActiva(Request $request)
 {
       $user= Sentinel::registerAndActivate([
-                      'email'      => 'admin',
+                      'email'      => 'admin@admin.com',
                       'password'   => 'admin',
                       'permissions'=>  [' '],
                       'last_login' =>  ' ',
-                      'first_name' => 'Muarucha',
-                      'last_name'  => 'Assane',
+                      'first_name' => 'Admin',
+                      'last_name'  => 'Admin',
                       ]);
 
                     $role = Sentinel::findRoleById(1);
