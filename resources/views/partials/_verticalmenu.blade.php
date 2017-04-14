@@ -1,19 +1,16 @@
 <nav class="navigation">
   <ul class="mainmenu">
-    <li class="{{Request::is('admin') ? "active": ""}}"><a href=""><strong>Progresso de Trabalhos</strong></a></li>
-    <li><a href=""><strong>Alocacões</strong></a>
+    <li><a href="" class="glyphicon glyphicon-folder-close"><b>Cadastros</b></a>
       <ul class="submenu">
-        <li><a href=""><strong>Coordenadores</strong></a></li>
-        <li><a href=""><strong>Estudantes</strong></a></li>
-        <li><a href=""><strong>Supervisores</strong></a></li>
+        <li><a href="/usuarios"><strong>Usuários</strong></a></li>
+        <li><a href=""><strong>Cursos</strong></a></li>
+        <li><a href=""><strong>Disciplinas</strong></a></li>
       </ul>
     </li>
-    <li><a href=""><strong>Defesas</strong></a></li>
-    <li><a href=""><strong>Publicacão de Monografias</strong></a></li>
-    <li><a href=""><strong>Registos</strong></a>
+    <li><a href="" class="glyphicon glyphicon-folder-close"><strong>Alocacões</strong></a>
       <ul class="submenu">
-        <li><a href=""><strong>Usuários</strong></a></li>
-        <li><a href=""><strong>Temas</strong></a></li>
+        <li><a href=""><strong>Chefes dos Departamentos</strong></a></li>
+        <li><a href=""><strong>Coordenadores das Disciplinas</strong></a></li>
       </ul>
     </li>
   </ul>
