@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use App\Disciplina;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -12,16 +12,15 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
       //REGISTA admin
-      $user= Sentinel::registerAndActivate([
-                      'email'      => 'admin@admin.com',
-                      'password'   => 'admin',
-                      'permissions'=>  [' '],
-                      'last_login' =>  ' ',
-                      'first_name' => 'Admin',
-                      'last_name'  => 'Admin',
-                      ]);
+      $disciplina= new Disciplina;
+      $disciplina->designacao = 'Estagio Profissional';
 
-                    $role = Sentinel::findRoleById(1);
-                    $role->users()->attach($user);
+      $disciplina->save();
+
+      $disciplina= new Disciplina;
+      $disciplina->designacao = 'Trabalho de Licenciatura';
+
+      $disciplina->save();
+
     }
 }

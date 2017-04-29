@@ -2,10 +2,10 @@
   <a href="{{route('departamentos.index')}}" class="{{Request::is('departamentos' || 'cadastros') ? "active item": ""}}">
     Departamentos
   </a>
-  <a class="item">
+  <a href="{{route('cursos.index')}}" class="{{Request::is('cursos' || 'cursos.edit') ? "active item": ""}}">
     Cursos
   </a>
-  <a class="item">
+  <a href="#" class="item">
     Disciplinas
   </a>
   <a class="item">
