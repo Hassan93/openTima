@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-      <form class="" action="/usuarios" method="post" data-parsley-validate>
+      <form class="" action="/registaradmin" method="post" data-parsley-validate>
         {{csrf_field()}}
           <div class="form-group">
              <label for="role_id">Escolha o grupo:</label>
@@ -23,11 +23,11 @@
             </div>
             <div id="checkboxes" class="input-group">
                 <label for="one">
-                  <input type="checkbox" id="one" />First checkbox</label>
+                  <input type="checkbox" id="one" name ="x[]" value="1"/>First checkbox</label>
                 <label for="two">
-                  <input type="checkbox" id="two" />Second checkbox</label>
+                  <input type="checkbox" id="two" name ="x[]" value="2"/>Second checkbox</label>
                 <label for="three">
-                  <input type="checkbox" id="three" />Third checkbox</label>
+                  <input type="checkbox" id="three" name ="x[]" value="3"/>Third checkbox</label>
               </div>
           </div>
           <div class="form-group">
@@ -48,7 +48,7 @@
           </div>
           <div class="form-group">
             <label for="password_confirmation">Confirmacao da Senha:</label>
-            <input type="email" name="password_confirmation" value="" alt="Introduza a confirmacao da senha provisoria" class="form-control">
+            <input type="password" name="password_confirmation" value="" alt="Introduza a confirmacao da senha provisoria" class="form-control">
           </div>
           <div class="">
             {{Form::submit('Registar', array('class'=>'btn btn-primary btn-block btn-lg form-spacing-top'))}}

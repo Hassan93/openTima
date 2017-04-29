@@ -2,7 +2,7 @@
   <ul class="mainmenu">
     <li><a href="" class="glyphicon glyphicon-folder-close"><b>Cadastros</b></a>
       <ul class="submenu">
-        <li><a href="/usuarios"><strong>Usuários</strong></a></li>
+        <li><a href="/usuarios"><strong>Utilizadores</strong></a></li>
         <li><a href=""><strong>Cursos</strong></a></li>
         <li><a href=""><strong>Disciplinas</strong></a></li>
       </ul>

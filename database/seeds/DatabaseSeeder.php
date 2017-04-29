@@ -11,6 +11,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+      //REGISTA admin
+      $user= Sentinel::registerAndActivate([
+                      'email'      => 'admin@admin.com',
+                      'password'   => 'admin',
+                      'permissions'=>  [' '],
+                      'last_login' =>  ' ',
+                      'first_name' => 'Admin',
+                      'last_name'  => 'Admin',
+                      ]);
+
+                    $role = Sentinel::findRoleById(1);
+                    $role->users()->attach($user);
     }
 }

@@ -1,11 +1,19 @@
-<div class="col-md-8 col-md-offset-2">
+<div class="four wide column offset">
 	@if(Session::has('success'))
-		<div class="alert alert-success" role="alert">
-			<h2><strong>Sucesso!</strong> {{Session::get('success')}}</h2>
+			<div class="ui positive message">
+		  <i class="close icon"></i>
+		  <div class="header">
+		    <h2><strong>Sucesso!</strong></h2>
+		  </div>
+		  <p> <b>{{Session::get('success')}}</b></p>
 		</div>
 	@elseif(Session::has('error'))
-		<div class="alert alert-danger" role="alert">
-			<h2><strong> Oops!</strong> {{Session::get('error')}}</h2>
-		</div>
+	<div class="ui negative message">
+	  <i class="close icon"></i>
+	  <div class="header">
+  		<h2><strong>Oops!</strong></h2>
+	  </div>
+	  <p><b>{{Session::get('error')}}</b></p>
+	</div>
 	@endif
 </div>
