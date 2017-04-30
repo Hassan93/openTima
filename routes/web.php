@@ -25,6 +25,8 @@ Route::group(['middleware'=>'web'], function (){
   Route::get('/logout', 'UsuariosController@logout');
   Route::resource('departamentos','DepartamentoController');
   Route::resource('cursos','CursoController');
+  Route::resource('docentes','DocenteController');
+
 
 });
 //Teste de rotas

@@ -5,13 +5,13 @@
   <a href="{{route('cursos.index')}}" class="{{Request::is('cursos' || 'cursos.edit') ? "active item": ""}}">
     Cursos
   </a>
-  <a href="#" class="item">
-    Disciplinas
-  </a>
-  <a class="item">
+  <a href="{{route('docentes.index')}}" class="{{Request::is('docentes') ? "active item": ""}}">
     Docentes
   </a>
   <a class="item">
     Estudantes
+  </a>
+  <a href="#" class="item">
+    Disciplinas
   </a>
 </div>
