@@ -13,20 +13,27 @@
 
 
 Route::group(['middleware'=>'web'], function (){
+  //Home page
   Route::get('/',  'PrincipalController@home');
   Route::get('/repositorio',  'PrincipalController@home');
   Route::get('/about',  'PrincipalController@home');
   Route::get('/contact',  'PrincipalController@home');
   Route::get('/admin',  'PrincipalController@admin');
+
+  //admin routes
+  Route::post('/registaradmin', 'UsuariosController@registaActiva'); // admin registeration
   Route::get('/usuarios', 'UsuariosController@registo');
-  Route::post('/registaradmin', 'UsuariosController@registaActiva');
   Route::get('/login', 'UsuariosController@login');
   Route::post('/login','UsuariosController@postlogin');
   Route::get('/logout', 'UsuariosController@logout');
   Route::resource('departamentos','DepartamentoController');
+  Route::Post('departamentos/{id}','DepartamentoController@actualizar');
   Route::resource('cursos','CursoController');
   Route::resource('docentes','DocenteController');
 
+//rotas chefe do departamentos
+Route::get('/feuem/{sigla}', 'HomeController@home');
+Route::get('/feuem', 'HomeController@search');
 
 });
 //Teste de rotas

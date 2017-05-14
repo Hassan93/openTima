@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Departamento;
+use App\Docente;
+use App\Helpers\Helpers;
+use Sentinel;
+use Session;
 
 class DepartamentoController extends Controller
 {
@@ -15,7 +19,7 @@ class DepartamentoController extends Controller
     public function index()
     {
         $departamentos=Departamento::all();
-        return view('departamentos.index')->withDepartamentos($departamentos);
+        return view('administrador.departamentos.index')->withDepartamentos($departamentos);
     }
 
     /**
@@ -25,7 +29,7 @@ class DepartamentoController extends Controller
      */
     public function create()
     {
-        //
+      echo "3";
     }
 
     /**
@@ -43,7 +47,7 @@ class DepartamentoController extends Controller
 
     $departamento->save();
 
-    return redirect(route('departamentos.index'));
+    return redirect(route('administrador.departamentos.index'));
     }
 
     /**
@@ -54,7 +58,7 @@ class DepartamentoController extends Controller
      */
     public function show($id)
     {
-        //
+        echo "2";
     }
 
     /**
@@ -65,7 +69,9 @@ class DepartamentoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $departamento = Departamento::find($id);
+        $docentes = $departamento->docentes;
+       return view('administrador.departamentos.edit')->withDepartamento($departamento)->withDocentes($docentes);
     }
 
     /**
@@ -77,7 +83,7 @@ class DepartamentoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        echo "string";
     }
 
     /**
@@ -88,6 +94,27 @@ class DepartamentoController extends Controller
      */
     public function destroy($id)
     {
-        //
+      echo "1";
+    }
+    public function actualizar(Request $request, $id)
+    {
+      $departamento = Departamento::find($id);
+      $docente = Docente::find($request->input('chefe_id'));
+      $departamento->update(['chefe_id'=>$docente->id]);
+
+      $user= Sentinel::registerAndActivate([
+                      'email'      => $docente->email,
+                      'password'   => $docente->primeiro_nome,
+                      'permissions'=>  [' '],
+                      'last_login' =>  ' ',
+                      'first_name' => $docente->primeiro_nome,
+                      'last_name'  => $docente->ultimo_nome,
+                      ]);
+
+                    $role = Sentinel::findRoleById(3);
+                    $role->users()->attach($user);
+                    Helpers::sendWelcomeMail($docente);
+            Session::flash('success', 'Sucesso: E-mail enviado para o docente');
+    return redirect()->route('administrador.departamentos.index');
     }
 }

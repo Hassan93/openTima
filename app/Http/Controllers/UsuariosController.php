@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Sentinel;
 use Session;
+use App\Docente;
 
 use Illuminate\Http\Request;
 
@@ -58,11 +59,11 @@ public function postLogin(Request $request){
               Session::flash('success', 'Administrador autenticado com sucesso!');
           return redirect('/administracao');
 ;
-          }elseif ($slug=='faculdade') {
-
+          }elseif ($slug=='chefe_do_departamento') {
+               $docente = Docente::where('email','=',Sentinel::getUser()->email)->first();
                Session::flash('success', 'Autenticado com sucesso!');
 
-            return redirect(url('/faculdade/'.$slug = Sentinel::getUser()->faculdade));
+            return redirect(url('/feuem/'.$docente->departamento->sigla));
           }
         }
         public function logout($value='')
