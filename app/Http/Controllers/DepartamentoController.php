@@ -115,6 +115,6 @@ class DepartamentoController extends Controller
                     $role->users()->attach($user);
                     Helpers::sendWelcomeMail($docente);
             Session::flash('success', 'Sucesso: E-mail enviado para o docente');
-    return redirect()->route('administrador.departamentos.index');
+    return redirect()->route('departamentos.index');
     }
 }
