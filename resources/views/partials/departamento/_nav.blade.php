@@ -28,9 +28,9 @@
     More
     <i class="dropdown icon"></i>
     <div class="menu">
-      <a class="item"><i class="edit icon"></i> Edit Profile</a>
-      <a class="item"><i class="globe icon"></i> Choose Language</a>
-      <a class="item"><i class="settings icon"></i> Account Settings</a>
+      <a class="item"><i class="edit icon"></i> Perfil</a>
+      <a class="item"><i class="settings icon"></i>Config. da Conta</a>
+      <a class="item" href="{{url('/logout')}}"><i class="sign out icon"></i> Logout</a>
     </div>
   </div>
 </div>

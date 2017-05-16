@@ -54,14 +54,6 @@
  </div>
  <div class="card">
    <div class="content">
-     <div class="header"><a href="#"><i class="message icon"></i>Notificacoes</a></div>
-     <div class="description">
-       Verifique novos outputs dos trabalhos
-     </div>
-   </div>
- </div>
- <div class="card">
-   <div class="content">
      <div class="header"><a href="#"><i class="announcement icon"></i>Marcacao de defesas</a></div>
      <div class="description">
        Publicacao de defesas.
@@ -73,7 +65,15 @@
    <div class="content">
      <div class="header"><a href="#"><i class="users icon"></i>Alocacao de supervisores</a></div>
      <div class="description">
-       Designacao de docente para orientar estudante 
+       Designacao de docente para orientar estudante
+     </div>
+   </div>
+ </div>
+ <div class="card">
+   <div class="content">
+     <div class="header"><a href="#"><i class="users icon"></i>Areas Cientificas</a></div>
+     <div class="description">
+       Designacao de docente para orientar estudante
      </div>
    </div>
  </div>

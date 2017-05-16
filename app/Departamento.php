@@ -22,6 +22,6 @@ class Departamento extends Model
 
     public function chefe()
     {
-    	return $this->hasOne('App\Docente', 'chefe_id');
+    	return $this->hasOne('App\Docente');
     }
 }

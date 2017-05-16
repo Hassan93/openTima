@@ -30,6 +30,7 @@ Route::group(['middleware'=>'web'], function (){
   Route::Post('departamentos/{id}','DepartamentoController@actualizar');
   Route::resource('cursos','CursoController');
   Route::resource('docentes','DocenteController');
+  Route::resource('estudantes', 'EstudanteController');
 
 //rotas chefe do departamentos
 Route::get('/feuem/{sigla}', 'HomeController@home');
