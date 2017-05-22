@@ -113,7 +113,7 @@ class DepartamentoController extends Controller
                       'last_name'  => $docente->ultimo_nome,
                       ]);
 
-                    $role = Sentinel::findRoleById(3);
+                    $role = Sentinel::findRoleBySlug('chefe_do_departamento');
                     $role->users()->attach($user);
                     Helpers::sendWelcomeMail($docente);
             Session::flash('success', 'Sucesso: E-mail enviado para o docente');
