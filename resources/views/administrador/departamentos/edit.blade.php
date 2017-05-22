@@ -22,11 +22,11 @@
           <select class="ui search dropdown" name="chefe_id" id="chefe_id">
             @if($departamento->chefe_id != Null)
               <option value="{{$departamento->chefe_id}}">{{$departamento->chefe->primeiro_nome.' '.$departamento->chefe->ultimo_nome}}</option>
-            @else
+            @endif
               @foreach($docentes as $docente)
               <option value="{{$docente->id}}">{{$docente->primeiro_nome.' '.$docente->ultimo_nome}}</option>
               @endforeach
-            @endif
+
           </select>
         </div>
         <div class="twelve  wide field"style="padding-top:10px">
