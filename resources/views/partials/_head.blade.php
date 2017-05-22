@@ -4,8 +4,11 @@
 	<link href="{{ asset('css/layout.css') }} " rel="stylesheet" type="text/css"/>
 	<link href="{{ asset('css/bootstrap.css') }} " rel="stylesheet" type="text/css"/>
 	<link href="{{ asset('css/bootstrap.min.css') }} " rel="stylesheet" type="text/css"/>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css">
+	<script src="https://cdn.jsdelivr.net/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+	<!--<link href="{{ asset('css/semantic.css') }} " rel="stylesheet" type="text/css"/>
+	<link href="{{ asset('css/semantic.min.css') }} " rel="stylesheet" type="text/css"/> -->
 	@yield('stylesheets')
-  @yield('scripts')
+	@yield('scripts')

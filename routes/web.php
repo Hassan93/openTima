@@ -13,31 +13,38 @@
 
 
 Route::group(['middleware'=>'web'], function (){
-  //Home page
-  Route::get('/',  'PrincipalController@home');
-  Route::get('/repositorio',  'PrincipalController@home');
-  Route::get('/about',  'PrincipalController@home');
-  Route::get('/contact',  'PrincipalController@home');
-  Route::get('/admin',  'PrincipalController@admin');
+  Route::get('/', function () {
+    return redirect(url('/login'));
+
+  });
+
+Route::get('/login', 'Usuarios\UsuarioController@login');
+Route::post('/login','Usuarios\UsuarioController@postlogin');
+
+//Rotas para logout
+
+Route::get('/logout', 'Usuarios\UsuarioController@logout');
 
   //admin routes
   Route::post('/registaradmin', 'UsuariosController@registaActiva'); // admin registeration
   Route::get('/usuarios', 'UsuariosController@registo');
-  Route::get('/login', 'UsuariosController@login');
-  Route::post('/login','UsuariosController@postlogin');
-  Route::get('/logout', 'UsuariosController@logout');
-  Route::resource('departamentos','DepartamentoController');
-  Route::Post('departamentos/{id}','DepartamentoController@actualizar');
-  Route::resource('cursos','CursoController');
-  Route::resource('docentes','DocenteController');
-  Route::resource('estudantes', 'EstudanteController');
+  Route::resource('departamentos','Admin\DepartamentoController');
+  Route::Post('departamentos/{id}','Admin\DepartamentoController@actualizar');
+  Route::resource('cursos','Admin\CursoController');
+  Route::resource('docentes','Admin\DocenteController');
+  Route::resource('estudantes', 'Admin\EstudanteController');
 
 //rotas chefe do departamentos
-Route::get('/feuem/{sigla}', 'HomeController@home');
+Route::get('/feuem/{sigla}', 'chefe_depto\HomeController@home');
+Route::get('/feuem/{sigla}/{id}','chefe_depto\HomeController@curso');
 Route::get('/feuem', 'HomeController@search');
+Route::get('/feuem/{sigla}/estudantes', 'EstudanteDepartamentoController@cursos');
+Route::get('/feuem/{sigla}/estudantes/{id}', 'EstudanteDepartamentoController@estudante');
+
+
 
 });
-//Teste de rotas
-Route::get('/administracao','AdministracaoController@teste');
-Route::get('/teste','AdministracaoController@departamentos');
+//de rotas
+Route::get('/administracao','Admin\HomeController@admin');
+Route::get('/teste','AdministracaoController@teste');
 Route::get('/cadastros','AdministracaoController@cadastros');

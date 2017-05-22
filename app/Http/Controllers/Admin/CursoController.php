@@ -4,11 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
-use App\Docente;
+use App\Curso;
 use App\Departamento;
 
-class DocenteController extends Controller
+class CursoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +16,10 @@ class DocenteController extends Controller
      */
     public function index()
     {
-       $departamentos = Departamento::all();
-       $docentes = Docente::all();
+         $departamentos= Departamento::all();
+         $cursos = Curso::all();
 
-       return view('administrador.docentes.index')->withDepartamentos($departamentos)->withDocentes($docentes);
+        return view('administrador.cursos.index')->withCursos($cursos)->withDepartamentos($departamentos);
     }
 
     /**
@@ -42,16 +41,12 @@ class DocenteController extends Controller
     public function store(Request $request)
     {
         $departamento = Departamento::find($request->input('departamento_id'));
-        $docente = new Docente;
+        $curso = new Curso;
 
-        $docente->primeiro_nome = $request->input('primeiro_nome');
-        $docente->ultimo_nome   = $request->input('ultimo_nome');
-        $docente->email         = $request->input('email');
-        $docente->celular       = $request->input('celular');
+        $curso->designacao = $request->input('designacao');
+        $departamento->cursos()->save($curso);
 
-        $departamento->docentes()->save($docente);
-
-     return redirect(route('docentes.index'));
+      return redirect(route('cursos.index'));
     }
 
     /**

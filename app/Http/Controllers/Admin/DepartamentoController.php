@@ -1,11 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Helpers\Helpers;
+use App\Http\Controllers\Controller;
+
 use App\Departamento;
 use App\Docente;
+use App\Helpers\Helpers;
+use Sentinel;
+use Session;
 
 class DepartamentoController extends Controller
 {
@@ -45,7 +49,7 @@ class DepartamentoController extends Controller
 
     $departamento->save();
 
-    return redirect(route('departamentos.index'));
+    return redirect(route('administrador.departamentos.index'));
     }
 
     /**

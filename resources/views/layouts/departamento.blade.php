@@ -4,14 +4,14 @@
 			@include('partials._logedinuserheader')
 		</head>
 		<body>
-			<div class="ui divider">
-
-  		</div>
-			<div class="ui grid">
+			<div class="row">
+				@include('partials.admin._horizontalnav')
+			</div>
+			<div class="ui grid"style="padding-top: 50px">
 			  <div class="four wide column">
 						@yield('side_nav')
 				</div>
-			  <div class="twelve wide column">
+			  <div class="eleven wide column" style="padding-top: 30px">
 						@yield('content')
 				</div>
       </div>
