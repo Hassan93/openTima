@@ -66,7 +66,7 @@ class UsuarioController extends Controller
                  Session::flash('success', 'Autenticado com sucesso!');
               return redirect(url('/feuem/'.$docente->departamento->sigla));
             }elseif ($slug=='estudante') {
-              return redirect(url('/feuem/estudantes'));
+              return redirect(url('/feng/estudantes'));
             }
           }
           public function logout($value='')

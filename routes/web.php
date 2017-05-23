@@ -42,7 +42,7 @@ Route::get('/feuem/{sigla}/estudantes', 'EstudanteDepartamentoController@cursos'
 Route::get('/feuem/{sigla}/estudantes/{id}', 'EstudanteDepartamentoController@estudante');
 
 //rotas estudante
-Route::get('/teste/estudantes', 'Estudante\HomeController@home');
+Route::get('/feng/estudantes', 'Estudante\HomeController@home');
 
 });
 //de rotas
