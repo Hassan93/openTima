@@ -2,7 +2,7 @@
   <div class="ui container">
     <a href="#" class="header item">
       <i class="bar chart icon"></i>
-         DELL
+         Dashboard
     </a>
     <a href="#" class="active item">Home</a>
     <div class="ui simple dropdown item">

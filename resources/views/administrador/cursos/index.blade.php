@@ -36,7 +36,7 @@
 @endsection
 
 @section('scripts')
-    <script type="text/javascript">
+<script type="text/javascript">
       function show_model() {
         $('.ui.modal')
       .modal('show');

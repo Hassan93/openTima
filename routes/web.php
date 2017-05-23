@@ -26,8 +26,8 @@ Route::post('/login','Usuarios\UsuarioController@postlogin');
 Route::get('/logout', 'Usuarios\UsuarioController@logout');
 
   //admin routes
-  Route::post('/registaradmin', 'UsuariosController@registaActiva'); // admin registeration
-  Route::get('/usuarios', 'UsuariosController@registo');
+  Route::post('/registaradmin', 'Usuarios\UsuarioController@registaActiva'); // admin registeration
+  Route::get('/usuarios', 'Usuarios\UsuarioController@registo');
   Route::resource('departamentos','Admin\DepartamentoController');
   Route::Post('departamentos/{id}','Admin\DepartamentoController@actualizar');
   Route::resource('cursos','Admin\CursoController');
@@ -37,14 +37,15 @@ Route::get('/logout', 'Usuarios\UsuarioController@logout');
 //rotas chefe do departamentos
 Route::get('/feuem/{sigla}', 'chefe_depto\HomeController@home');
 Route::get('/feuem/{sigla}/{id}','chefe_depto\HomeController@curso');
-Route::get('/feuem', 'HomeController@search');
+//Route::get('/feuem', 'HomeController@search');
 Route::get('/feuem/{sigla}/estudantes', 'EstudanteDepartamentoController@cursos');
 Route::get('/feuem/{sigla}/estudantes/{id}', 'EstudanteDepartamentoController@estudante');
 
-
+//rotas estudante
+Route::get('/teste/estudantes', 'Estudante\HomeController@home');
 
 });
 //de rotas
 Route::get('/administracao','Admin\HomeController@admin');
-Route::get('/teste','AdministracaoController@teste');
-Route::get('/cadastros','AdministracaoController@cadastros');
+//Route::get('/teste','AdministracaoController@teste');
+//Route::get('/cadastros','AdministracaoController@cadastros');

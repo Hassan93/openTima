@@ -18,15 +18,15 @@ class UsuarioController extends Controller
   public function registaActiva(Request $request)
   {
         $user= Sentinel::registerAndActivate([
-                        'email'      => 'admin@admin.com',
-                        'password'   => 'admin',
+                        'email'      => 'estudante@estudante.com',
+                        'password'   => 'estudante',
                         'permissions'=>  [' '],
                         'last_login' =>  ' ',
-                        'first_name' => 'Admin',
-                        'last_name'  => 'Admin',
+                        'first_name' => 'Estudante',
+                        'last_name'  => 'Teste',
                         ]);
 
-                      $role = Sentinel::findRoleById(1);
+                      $role = Sentinel::findRoleBySlug('estudante');
                       $role->users()->attach($user);
               Session::flash('success', 'Sucesso: Utilizador Cadastrado com Sucesso');
               return redirect('/');
@@ -64,8 +64,9 @@ class UsuarioController extends Controller
             }elseif ($slug=='chefe_do_departamento') {
                  $docente = Docente::where('email','=',Sentinel::getUser()->email)->first();
                  Session::flash('success', 'Autenticado com sucesso!');
-
               return redirect(url('/feuem/'.$docente->departamento->sigla));
+            }elseif ($slug=='estudante') {
+              return redirect(url('/feuem/estudantes'));
             }
           }
           public function logout($value='')
