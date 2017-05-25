@@ -11,8 +11,8 @@ class Docente extends Model
     	return $this->belongsTo('App\Departamento');
     }
 
-        public function areas_cientificas()
+        public function areas()
     {
-    	 return $this->belongsToMany('App\Area', 'area_docentes', 'area_id', 'docente_id');
+    	 return $this->belongsToMany('App\Area', 'area_docentes','docente_id','area_id');
     }
 }

@@ -23,7 +23,7 @@
   <div class="four wide column">
   </div>
   <div class="four wide column">
-    <button class="ui teal button" onclick="model_temas()"><i class="plus icon"></i>Nova Actividade</button>
+    <button class="ui teal button" onclick="model_temas()"><i class="plus icon"></i>Novo tema</button>
   </div>
 </div>
 <div class="row">
@@ -86,24 +86,24 @@
         <div class="field">
           <label>Area Científica do tema</label>
           <select class="ui fluid search dropdown" name="estado">
-            <option value="5">Engenharia de Software</option>
-            <option value="10">Redes de Computadores</option>
-            <option value="5">Inteligencia Atificial</option>
-            <option value="10">Electronica Digital</option>
+            <option value="0">Escolha a area que o tema se enquadra</option>
+            @foreach($curso->areas as $area)
+            <option value="{{$area->id}}">{{$area->designacao}}</option>
+            @endforeach()
           </select>
         </div>
         <div class="field">
           <label>Estudante</label>
-          <select class="ui fluid search dropdown" name="estado">
-            <option value="5">Julia Beula</option>
-            <option value="10">Valter Cheque</option>
-            <option value="5">Julia Beula</option>
-            <option value="10">Valter Cheque</option>
+          <select class="ui fluid search dropdown" name="estudante">
+            <option value="0">Escolha o estudante</option>
+            @foreach($curso->estudantes as $estudante)
+              <option value="{{$estudante->id}}">{{$estudante->primeiro_nome.' '.$estudante->ultimo_nome}}</option>
+            @endforeach()
           </select>
         </div>
       </div>
         <div class="field">
-            <label>Descrição da actividade</label>
+            <label>Descrição do tema</label>
             <textarea></textarea>
         </div>
         <div class="field">

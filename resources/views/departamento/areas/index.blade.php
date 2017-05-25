@@ -21,7 +21,7 @@
           <td>{{$area->id}}</td>
           <td>{{$area->designacao}}</td>
           <td class="right aligned">
-            <a href="#" class="ui green button"><i class="users icon"></i></a>
+            <a href="{{url('/feuem/'.$curso->departamento->sigla.'/'.$curso->id.'/area/'.$area->id)}}" class="ui green button"><i class="users icon"></i></a>
             <a class="ui positive button"><i class="pencil icon"></i></a>
             <a class="ui negative button"><i class="close icon"></i></a>
           </td>

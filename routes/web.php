@@ -38,6 +38,10 @@ Route::get('/logout', 'Usuarios\UsuarioController@logout');
 Route::get('/feuem/{sigla}', 'chefe_depto\HomeController@home');
 Route::get('/feuem/{sigla}/{id}','chefe_depto\HomeController@curso');
 Route::post('/feuem/{sigla}/{id}/area','chefe_depto\AreaController@nova_area');
+Route::get('/feuem/{sigla}/{id}/area/{area_id}','chefe_depto\AreaController@show_area');
+Route::post('/feuem/{sigla}/{id}/area/{area_id}','chefe_depto\AreaController@docente_areas');
+
+
 
 //Route::get('/feuem', 'HomeController@search');
 Route::get('/feuem/{sigla}/estudantes', 'EstudanteDepartamentoController@cursos');
