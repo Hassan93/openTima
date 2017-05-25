@@ -37,6 +37,8 @@ Route::get('/logout', 'Usuarios\UsuarioController@logout');
 //rotas chefe do departamentos
 Route::get('/feuem/{sigla}', 'chefe_depto\HomeController@home');
 Route::get('/feuem/{sigla}/{id}','chefe_depto\HomeController@curso');
+Route::post('/feuem/{sigla}/{id}/area','chefe_depto\AreaController@nova_area');
+
 //Route::get('/feuem', 'HomeController@search');
 Route::get('/feuem/{sigla}/estudantes', 'EstudanteDepartamentoController@cursos');
 Route::get('/feuem/{sigla}/estudantes/{id}', 'EstudanteDepartamentoController@estudante');

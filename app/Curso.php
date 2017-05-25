@@ -15,9 +15,9 @@ class Curso extends Model
     	return $this->hasMany('App\Estudante');
     }
 
-    public function areas_de_interesse($value='')
+    public function areas($value='')
      {
-     	return $this->hasMany('App\Areas');
+     	return $this->hasMany('App\Area');
      }
     public function disciplinas()
     {
