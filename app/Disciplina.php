@@ -13,6 +13,6 @@ class Disciplina extends Model
 
     public function estudantes()
     {
-    	return $this->belongsToMany('App\Estudante', 'estudante_disciplina', 'estudante_id', 'disciplina_id');
+    	return $this->belongsToMany('App\Estudante', 'estudantes_disciplinas','estudante_id', 'disciplina_id');
     }
 }

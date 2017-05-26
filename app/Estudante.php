@@ -10,9 +10,8 @@ class Estudante extends Model
     {
     	return $this->belongsTo('App\Curso');
     }
-
     public function disciplinas()
     {
-    	return $this->belongsToMany('App\Disciplina', 'estudante_disciplina', 'estudante_id', 'disciplina_id');
+    	return $this->belongsToMany('App\Disciplina', 'estudantes_disciplinas','estudante_id','disciplina_id');
     }
 }

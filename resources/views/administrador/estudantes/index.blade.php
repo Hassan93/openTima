@@ -130,6 +130,15 @@ function validacao() {
                   @endforeach
                 </select>
               </div>
+              <div class="sixteen  wide field">
+                <label>Disciplina</label>
+                <select class="ui search dropdown" name="disciplina_id" id="disciplina_id">
+                  <option value="0">Escolha a disciplina</option>
+                  @foreach($disciplinas as $disciplina)
+                  <option value="{{$disciplina->id}}">{{$disciplina->designacao}}</option>
+                  @endforeach
+                </select>
+              </div>
               <div class="sixteen  wide field"style="padding-top:10px">
                     <button type="submit" class="fluid ui green button" onclick="validacao()">Gravar</button>
               </div>

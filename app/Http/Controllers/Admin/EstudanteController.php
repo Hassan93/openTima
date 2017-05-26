@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Estudante;
 use App\Curso;
+use App\Disciplina;
 
 class EstudanteController extends Controller
 {
@@ -18,8 +19,11 @@ class EstudanteController extends Controller
     {
         $estudantes = Estudante::orderBy('id','desc')->paginate(2);
         $cursos = Curso::all();
+        $disciplinas = Disciplina::all();
 
-        return view('administrador.estudantes.index')->withEstudantes($estudantes)->withCursos($cursos);
+        return view('administrador.estudantes.index')->withEstudantes($estudantes)
+                                                     ->withCursos($cursos)
+                                                     ->withDisciplinas($disciplinas);
     }
 
     /**
@@ -49,10 +53,15 @@ class EstudanteController extends Controller
       $estudante->celular       = $request->input('celular');
 
       $curso->estudantes()->save($estudante);
-
+      $this->alocacao_estudante_disciplina($estudante->email, $request->input('disciplina_id'));
    return redirect(route('estudantes.index'));
     }
-
+public function alocacao_estudante_disciplina($email, $disciplina_id)
+{
+      $disciplina = Disciplina::find($disciplina_id);
+      $estudante = Estudante::where('email','=',$email)->first();
+      $estudante->disciplinas()->attach($disciplina);
+}
     /**
      * Display the specified resource.
      *
