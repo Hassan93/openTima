@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Curso;
 use App\Departamento;
+use App\Tema;
 
 class HomeController extends Controller
 {
@@ -18,7 +19,9 @@ class HomeController extends Controller
     public function curso($sigla, $id)
     {
       $curso = Curso::find($id);
+      $temas = Tema::orderBy('id', 'desc')->get();
 
-    return view('departamento.cursos.home')->withCurso($curso);
+    return view('departamento.cursos.home')->withCurso($curso)
+                                           ->withTemas($temas);
     }
 }

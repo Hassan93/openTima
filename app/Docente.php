@@ -15,4 +15,8 @@ class Docente extends Model
     {
     	 return $this->belongsToMany('App\Area', 'area_docentes','docente_id','area_id');
     }
+    public function supervisaos(){
+
+      	return $this->hasMany('App\Supervisao','supervisor_id');
+      }
 }

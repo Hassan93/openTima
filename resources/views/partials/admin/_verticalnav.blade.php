@@ -10,22 +10,14 @@
   <div class="item">
     <div class="ui input"><input placeholder="Search..." type="text"></div>
   </div>
-  <div class="item">
-    Home
-    <div class="menu">
-      <a class="active item">Search</a>
-      <a class="item">Add</a>
-      <a class="item">Remove</a>
-    </div>
-  </div>
   <a class="item">
-    <i class="grid layout icon"></i> Browse
+    <i class="grid layout icon"></i> Dashboard
   </a>
   <a class="item">
-    Messages
+      Notificações<i class="mail outline icon"></i>
   </a>
   <div class="ui dropdown item">
-    More
+    <i class="setting icon"></i>Mais
     <i class="dropdown icon"></i>
     <div class="menu">
       <a class="item"><i class="edit icon"></i> Perfil</a>

@@ -12,7 +12,7 @@
            <thead>
              <tr>
                <th colspan="2">
-                 Ref do tema:EID20179
+                 Ref do tema:{{$supervisao->tema->referencia}}
                </th>
              </tr>
            </thead>
@@ -40,7 +40,7 @@
            <thead>
              <tr>
                <th colspan="2">
-                 Ref do tema: EID20179
+                 Ref do tema: {{$supervisao->tema->referencia}}
                </th>
              </tr>
            </thead>
@@ -66,7 +66,7 @@
        <thead>
          <tr>
            <th colspan="2">
-             Ref do tema: EID20179
+             Ref do tema: {{$supervisao->tema->referencia}}
            </th>
          </tr>
        </thead>
@@ -123,48 +123,24 @@
 
           </thead>
            <tbody>
-             <tr>
-               <td>
-                 <a class="ui green tag label">Actividade 1</a>
-               </td>
-               <td class="right aligned">
-                    <div class="ui dropdown item">
-                      <i class="ellipsis vertical icon"></i>
-                      <div class="menu">
-                        <a class="item">Terminada</a>
-                        <a class="item">Pausada</a>
-                      </div>
-                  </div>
-               </td>
-             </tr>
-             <tr>
-               <td>
-                 <a class="ui green tag label">Actividade 2</a>
-               </td>
-               <td class="right aligned">
-                    <div class="ui dropdown item">
-                      <i class="ellipsis vertical icon"></i>
-                      <div class="menu">
-                        <a class="item">Terminada</a>
-                        <a class="item">Pausada</a>
-                      </div>
-                  </div>
-               </td>
-             </tr>
-             <tr>
-               <td>
-                 <a class="ui green tag label">Actividade 3</a>
-               </td>
-               <td class="right aligned">
-                    <div class="ui dropdown item">
-                      <i class="ellipsis vertical icon"></i>
-                      <div class="menu">
-                        <a class="item">Terminada</a>
-                        <a class="item">Pausada</a>
-                      </div>
-                  </div>
-               </td>
-             </tr>
+             @foreach($supervisao->actividades as $actividade)
+             @if($actividade->estado=='Progresso')
+              <tr>
+                <td>
+                  <a class="ui green tag label">{{$actividade->designacao}}</a>
+                </td>
+                <td class="right aligned">
+                     <div class="ui dropdown item">
+                       <i class="ellipsis vertical icon"></i>
+                       <div class="menu">
+                         <a class="item" href="{{url('/feng/estudantes/actividades/'.$actividade->id.'/Iniciado')}}">Interroper</a>
+                         <a class="item" href="{{url('/feng/estudantes/actividades/'.$actividade->id.'/Terminado')}}">Terminar</a>
+                       </div>
+                   </div>
+                </td>
+              </tr>
+              @endif
+              @endforeach
            </tbody>
          </table>
        </div>
@@ -174,48 +150,24 @@
 
           </thead>
            <tbody>
+            @foreach($supervisao->actividades as $actividade)
+            @if($actividade->estado=='Iniciado')
              <tr>
                <td>
-                 <a class="ui red tag label">Actividade 1</a>
+                 <a class="ui red tag label">{{$actividade->designacao}}</a>
                </td>
                <td class="right aligned">
                     <div class="ui dropdown item">
                       <i class="ellipsis vertical icon"></i>
                       <div class="menu">
-                        <a class="item">Terminada</a>
-                        <a class="item">Pausada</a>
+                        <a class="item" href="{{url('/feng/estudantes/actividades/'.$actividade->id.'/Progresso')}}">Em progresso</a>
+                        <a class="item" href="{{url('/feng/estudantes/actividades/'.$actividade->id.'/Terminado')}}">Terminar</a>
                       </div>
                   </div>
                </td>
              </tr>
-             <tr>
-               <td>
-                 <a class="ui red tag label">Actividade 2</a>
-               </td>
-               <td class="right aligned">
-                    <div class="ui dropdown item">
-                      <i class="ellipsis vertical icon"></i>
-                      <div class="menu">
-                        <a class="item">Terminada</a>
-                        <a class="item">Pausada</a>
-                      </div>
-                  </div>
-               </td>
-             </tr>
-             <tr>
-               <td>
-                 <a class="ui red tag label">Actividade 3</a>
-               </td>
-               <td class="right aligned">
-                    <div class="ui dropdown item">
-                      <i class="ellipsis vertical icon"></i>
-                      <div class="menu">
-                        <a class="item">Terminada</a>
-                        <a class="item">Pausada</a>
-                      </div>
-                  </div>
-               </td>
-             </tr>
+             @endif
+             @endforeach
            </tbody>
          </table>
        </div>
@@ -225,48 +177,24 @@
 
           </thead>
            <tbody>
-             <tr>
-               <td>
-                 <a class="ui yellow tag label">Actividade 1</a>
-               </td>
-               <td class="right aligned">
-                    <div class="ui dropdown item">
-                      <i class="ellipsis vertical icon"></i>
-                      <div class="menu">
-                        <a class="item">Terminada</a>
-                        <a class="item">Pausada</a>
-                      </div>
-                  </div>
-               </td>
-             </tr>
-             <tr>
-               <td>
-                 <a class="ui yellow tag label">Actividade 2</a>
-               </td>
-               <td class="right aligned">
-                    <div class="ui dropdown item">
-                      <i class="ellipsis vertical icon"></i>
-                      <div class="menu">
-                        <a class="item">Terminada</a>
-                        <a class="item">Pausada</a>
-                      </div>
-                  </div>
-               </td>
-             </tr>
-             <tr>
-               <td>
-                 <a class="ui yellow tag label">Actividade 3</a>
-               </td>
-               <td class="right aligned">
-                    <div class="ui dropdown item">
-                      <i class="ellipsis vertical icon"></i>
-                      <div class="menu">
-                        <a class="item">Terminada</a>
-                        <a class="item">Pausada</a>
-                      </div>
-                  </div>
-               </td>
-             </tr>
+             @foreach($supervisao->actividades as $actividade)
+             @if($actividade->estado=='Terminado')
+              <tr>
+                <td>
+                  <a class="ui yellow tag label">{{$actividade->designacao}}</a>
+                </td>
+                <td class="right aligned">
+                     <div class="ui dropdown item">
+                       <i class="ellipsis vertical icon"></i>
+                       <div class="menu">
+                         <a class="item" href="{{url('/feng/estudantes/actividades/'.$actividade->id.'/Iniciado')}}">Desfazer</a>
+                         <a class="item" href="{{url('/feng/estudantes/actividades/'.$actividade->id.'/Progresso')}}">Retomar</a>
+                       </div>
+                   </div>
+                </td>
+              </tr>
+              @endif
+              @endforeach
            </tbody>
          </table>
        </div>
@@ -296,10 +224,11 @@ function model() {
   <i class="close icon"></i>
   <div class="header">Nova Actividade</div>
   <div class="content">
-    <div class="ui form">
+    <form class="ui form" action="{{url('/feng/estudantes/'.$supervisao->id.'/actividades/create')}}" method="post">
+        {{ csrf_field() }}
       <div class="field">
         <label>Desgnação</label>
-              <input placeholder="designacao" type="text">
+              <input placeholder="designacao" type="text" name="designacao">
       </div>
       <div class="three wide fields">
         <div class="field">
@@ -316,28 +245,28 @@ function model() {
         <div class="field">
           <label>Estado</label>
           <select class="ui fluid search dropdown" name="estado">
-            <option value="5">Em progresso</option>
+            <option value="Progresso">Em progresso</option>
             <option value="10">Por começar</option>
           </select>
         </div>
         <div class="field">
           <label>Prioridade</label>
-          <select class="ui fluid search dropdown" name="peso">
-            <option value="5">Normal</option>
-            <option value="15">Média</option>
-            <option value="20">Alta</option>
+          <select class="ui fluid search dropdown" name="prioridade">
+            <option value="Normal">Normal</option>
+            <option value="Media">Média</option>
+            <option value="Alta">Alta</option>
           </select>
         </div>
       </div>
       <div class="field">
         <div class="field">
             <label>Descrição da actividade</label>
-            <textarea></textarea>
+            <textarea name="descricao"></textarea>
         </div>
         <div class="field">
           <button type="submit" class="fluid ui green button" onsubmit="">Gravar</button>
         </div>
       </div>
-    </div>
+    </form>
   </div>
 </div>

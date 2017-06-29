@@ -26,73 +26,53 @@
     </div>
   </div>
 </div>
-<div class="u grid"><!--Inicio da lista-->
-  <div class="ui middle aligned divided list">
-    <div class="item">
-      <div class="right floated content">
-        <div class="ui grid">
-          <div class="two wide column">
-            <div class="ui active progress">
-              <div class="bar">
-                <div class="progress">5%</div>
-              </div>
+
+<div class="row">
+  <table class="ui selectable table">
+    <thead>
+      <tr>
+        <th>Estudante</th>
+        <th>Referencia do tema</th>
+        <th>Tema</th>
+        <th>Supervisor</th>
+        <th>Progresso</th>
+        <th class="right aligned">Detalhes</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach($temas as $tema)
+      <tr>
+        <td>
+          <img class="ui avatar image" src="{{ App\User::get_gravatar($tema->estudante->email) }}">
+          {{$tema->estudante->primeiro_nome.' '.$tema->estudante->ultimo_nome}}
+        </td>
+        <td>{{$tema->referencia}}</td>
+        <td>{{$tema->designacao}}</td>
+        @foreach($tema->supervisaos as $supervisor)
+        @if($supervisor->papel == 'supervisor')
+          <td>
+            <img class="ui avatar image" src="{{ App\User::get_gravatar($supervisor->docente->email) }}">
+            {{$supervisor->docente->primeiro_nome.' '.$supervisor->docente->ultimo_nome}}
+          </td>
+        @endif
+        @endforeach
+        <td>
+          <div class="ui active progress">
+            <div class="bar">
+              <div class="progress">5%</div>
             </div>
           </div>
-          <div class="one wide column">
-          </div>
-          <div class="two wide column">
-            <div class="ui button"><i class="unhide icon"></i></div>
-          </div>
-        </div>
-      </div>
-        <img class="ui avatar image" src="{{ App\User::get_gravatar(Sentinel::getUser()->email) }}">
-        <div class="content">
-          <p><b>Muaruca C. Assane</b></p>
-        </div>
-    </div>
-    <div class="item">
-      <div class="right floated content">
-        <div class="ui grid">
-          <div class="two wide column">
-            <div class="ui active progress">
-              <div class="bar">
-                <div class="progress">5%</div>
-              </div>
+       </td>
+        <td class="right aligned">
+          <div class="ui animated fade button" tabindex="0">
+            <div class="visible content">Visualizar</div>
+            <div class="hidden content">
+              <a href="{{url('/feuem/'.$curso->departamento->sigla.'/'.$curso->id.'/estudantes/'.$tema->estudante->id)}}"><i class="unhide icon"></i></a>
             </div>
           </div>
-          <div class="one wide column">
-          </div>
-          <div class="two wide column">
-            <div class="ui button"><i class="unhide icon"></i></div>
-          </div>
-        </div>
-      </div>
-        <img class="ui avatar image" src="{{ App\User::get_gravatar(Sentinel::getUser()->email) }}">
-        <div class="content">
-          <p><b>Maquite Alberto</b></p>
-        </div>
-    </div>
-    <div class="item">
-      <div class="right floated content">
-        <div class="ui grid">
-          <div class="two wide column">
-            <div class="ui active progress">
-              <div class="bar">
-                <div class="progress">5%</div>
-              </div>
-            </div>
-          </div>
-          <div class="one wide column">
-          </div>
-          <div class="two wide column">
-            <div class="ui button"><i class="unhide icon"></i></div>
-          </div>
-        </div>
-      </div>
-        <img class="ui avatar image" src="{{ App\User::get_gravatar(Sentinel::getUser()->email) }}">
-        <div class="content">
-          <p><b>Julia Beula</b></p>
-        </div>
-    </div>
-  </div>
+        </td>
+      </tr>
+      @endforeach
+    </tbody>
+  </table>
 </div>

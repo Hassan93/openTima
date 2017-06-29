@@ -8,20 +8,19 @@
     <div class="ui simple dropdown item">
       Cursos <i class="dropdown icon"></i>
       <div class="menu">
-        <a class="item" href="#">Balanse</a>
-        <a class="item" href="#">Inngående</a>
-        <a class="item" href="#">Utgående</a>
+        <a class="item" href="#">Informática</a>
+        <a class="item" href="#">Eléctrica</a>
+        <a class="item" href="#">Electrónica</a>
         <div class="divider"></div>
-        <a class="item" href="#">Søk</a>
       </div>
     </div>
 
     <div class="ui simple dropdown item">
       Temas<i class="dropdown icon"></i>
       <div class="menu">
-        <a class="item" href="#">Oversikt</a>
+        <a class="item" href="#">Trabalho de Licenciatura</a>
         <div class="divider"></div>
-        <a class="item" href="#">Ny kunde</a>
+        <a class="item" href="#">Estágio Profissional</a>
       </div>
     </div>
 

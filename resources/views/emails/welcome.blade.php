@@ -1,11 +1,11 @@
 @extends('emails.layouts.master')
 
 @section('title')
-  Desejamos-lhe boas vindas ao Sistema de Gestao de TCC!
+  Desejamos-lhe boas vindas ao Sistema de Gestão de TCC!
 @stop
 
 @section('content')
-  Foi foi alocado como chefe do Departamento.</br>
+  Foi alocado como supervisor.</br>
   <h3>Dados de acesso:</h3>
     senha : Seu primeiro nome
   <br><br>

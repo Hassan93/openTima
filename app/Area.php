@@ -15,4 +15,8 @@ class Area extends Model
     {
     	 return $this->belongsToMany('App\Docente', 'docente_areas', 'area_id', 'docente_id');
     }
+    public function temas($value='')
+    {
+      $this->hasMany('App\Tema');
+    }
 }

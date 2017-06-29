@@ -6,12 +6,13 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Departamento;
 use App\Curso;
+use App\Supervisao;
 
 class HomeController extends Controller
 {
-  public function home()
+  public function home($supervisao_id)
   {
-
-     return view('estudante.home');
+    $supervisao = Supervisao::find($supervisao_id);
+     return view('estudante.home')->withSupervisao($supervisao);
   }
 }

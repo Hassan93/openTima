@@ -5,6 +5,7 @@ namespace App\Helpers;
 use Illuminate\Support\Facades\Mail;
 use App\Docente;
 use Sentinel;
+use App\User;
 
 /**
  * Class Helpers
@@ -39,7 +40,7 @@ class Helpers {
 	********************************/
 
 	// Send the welcome email to the user
-	static function sendWelcomeMail(Docente $docente) {
+	static function sendWelcomeMail(User $docente) {
 		$data = [
 				'to' 	=> $docente->email,
 				'name' 	=> $docente->primeiro_nome.' '.$docente->ultimo_nome,
@@ -56,12 +57,12 @@ class Helpers {
 	/** Sends account deletion email **/
 
 	// Send project invite email
-	static function sendProjectInviteMail($email, $project_name, $project_url) {
+	static function sendProjectInviteMail($email, $referencia_do_tema, $supervisor) {
 		$data = [ 'to' => $email ];
 
-		Mail::send('emails.projectInvite', [ 'project_url' => $project_url, 'project_name' => $project_name ] , function($message) use ($data) {
+		Mail::send('emails.projectInvite', [ 'project_url' => $supervisor->primeiro_nome.' '.$supervisor->ultimo_nome , 'project_name' => $referencia_do_tema] , function($message) use ($data) {
 			$message->from(getenv('MAIL_FROM'), getenv('MAIL_FROM_NAME'));
-			$message->to($data['to'], '')->subject('You have been invited to a new project');
+			$message->to($data['to'], '')->subject('TEMA VALIDADO');
 		});
 	}
 }

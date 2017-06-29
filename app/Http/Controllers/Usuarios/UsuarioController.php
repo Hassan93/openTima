@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Sentinel;
 use Session;
 use App\Docente;
+use App\Estudante;
+use App\Supervisao;
 
 
 class UsuarioController extends Controller
@@ -66,7 +68,13 @@ class UsuarioController extends Controller
                  Session::flash('success', 'Autenticado com sucesso!');
               return redirect(url('/feuem/'.$docente->departamento->sigla));
             }elseif ($slug=='estudante') {
-              return redirect(url('/feng/estudantes'));
+              $estudante = Estudante::where('email','=',Sentinel::getUser()->email)->first();
+              $supervisao = Supervisao::where('estudante_id','=',$estudante->id)->first();
+
+              return redirect(url('/feng/estudantes/'.$supervisao->id));
+            }elseif ($slug=='docente') {
+               $docente = Docente::where('email','=',Sentinel::getUser()->email)->first();
+                return redirect(url('/feng/supervisores/'.$docente->id));
             }
           }
           public function logout($value='')

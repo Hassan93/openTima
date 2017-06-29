@@ -38,26 +38,26 @@
       </tr>
     </thead>
     <tbody>
+      @foreach($temas as $tema)
       <tr>
-        <td>TCC</td>
-        <td>2017EID17</td>
-        <td>Muarucha Assane</td>
-        <td class="positive"><i class="icon checkmark"></i>Alocado</td>
-        <td class="right aligned">
-          <button class="ui green button" disabled="true"><i class="users icon"></i></button>
-          <button class="ui basic button"><i class="pencil icon"></i></button>
-        </td>
-      </tr>
-      <tr>
-        <td>Integração de sistemas da UEM</td>
-        <td>2017EID19</td>
-        <td>Edson Michaque</td>
+        <td>{{$tema->designacao}}</td>
+        <td>{{$tema->referencia}}</td>
+        <td>{{$tema->estudante->primeiro_nome.' '.$tema->estudante->ultimo_nome}}</td>
+        @if($tema->status!=='Não alocado')
+          <td class="positive"><i class="icon checkmark"></i>Alocado</td>
+          <td class="right aligned">
+            <button class="ui green button" disabled="true"><i class="users icon"></i></button>
+            <button class="ui basic button"><i class="pencil icon"></i></button>
+          </td>
+        @else
         <td class="negative"><i class="icon close"></i>Não alocado</td>
         <td class="right aligned">
-          <button class="ui green button"><i class="users icon"></i></button>
+          <a class="ui green button" href="{{url('/feuem/'.$curso->departamento->sigla.'/'.$curso->id.'/temas/'.$tema->id)}}"><i class="users icon"></i></a>
           <button class="ui basic button"><i class="pencil icon"></i></button>
         </td>
+        @endif
       </tr>
+      @endforeach
     </tbody>
   </table>
 </div>
@@ -71,21 +71,22 @@
   <i class="close icon"></i>
   <div class="header">Registo do tema</div>
   <div class="content">
-    <div class="ui form">
+    <form class="ui form" method="post" action="{{url('/feuem/'.$curso->departamento->sigla.'/'.$curso->id.'/temas')}}">
+      {{csrf_field()}}
       <div class="two wide fields">
        <div class="field">
          <label>Desgnação do tema</label>
-               <input placeholder="o tema" type="text">
+               <input placeholder="o tema" type="text" name="designacao">
        </div>
        <div class="field">
          <label>Referência do tema</label>
-               <input placeholder="a referência do tema" type="text">
+               <input placeholder="a referência do tema" type="text" name="referencia">
        </div>
       </div>
       <div class="two wide fields">
         <div class="field">
           <label>Area Científica do tema</label>
-          <select class="ui fluid search dropdown" name="estado">
+          <select class="ui fluid search dropdown" name="area_id">
             <option value="0">Escolha a area que o tema se enquadra</option>
             @foreach($curso->areas as $area)
             <option value="{{$area->id}}">{{$area->designacao}}</option>
@@ -94,7 +95,7 @@
         </div>
         <div class="field">
           <label>Estudante</label>
-          <select class="ui fluid search dropdown" name="estudante">
+          <select class="ui fluid search dropdown" name="estudante_id">
             <option value="0">Escolha o estudante</option>
             @foreach($curso->estudantes as $estudante)
               <option value="{{$estudante->id}}">{{$estudante->primeiro_nome.' '.$estudante->ultimo_nome}}</option>
@@ -104,9 +105,9 @@
       </div>
         <div class="field">
             <label>Descrição do tema</label>
-            <textarea></textarea>
+            <textarea name="descricao"></textarea>
         </div>
         <div class="field">
           <button type="submit" class="fluid ui green button" onsubmit="">Gravar</button>
         </div>
-      </div>
+      </form>
