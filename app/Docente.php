@@ -19,4 +19,10 @@ class Docente extends Model
 
       	return $this->hasMany('App\Supervisao','supervisor_id');
       }
+
+      public function proposta_temas($value='')
+      {
+        return $this->hasMany('App\proposta_tema', 'docente_id');
+
+      }
 }

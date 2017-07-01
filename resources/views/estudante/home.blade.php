@@ -246,7 +246,7 @@ function model() {
           <label>Estado</label>
           <select class="ui fluid search dropdown" name="estado">
             <option value="Progresso">Em progresso</option>
-            <option value="10">Por começar</option>
+            <option value="Iniciado">Por começar</option>
           </select>
         </div>
         <div class="field">
