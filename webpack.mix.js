@@ -17,3 +17,13 @@ mix.js('resources/assets/js/app.js', 'public/js')
    mix.copy('node_modules/semantic-ui-css/semantic.css', 'public/css/semantic.css');
    mix.copy('node_modules/semantic-ui-css/semantic.min.js', 'public/css/semantic.min.js');
    mix.copy('node_modules/semantic-ui-css/semantic.js', 'public/css/semantic.js');
+   mix.copy('node_modules/semantic-ui-calendar/dist/calendar.min.js', 'public/js/calendar.min.js');
+   mix.copy('node_modules/semantic-ui-calendar/dist/calendar.min.css', 'public/css/calendar.min.css');
+   mix.copy('node_modules/fullcalendar/dist/fullcalendar.min.js', 'public/js/fullcalendar.min.js');
+   mix.copy('node_modules/fullcalendar/dist/fullcalendar.min.css', 'public/css/fullcalendar.min.css');
+   mix.copy('node_modules/moment/min/moment.min.js', 'public/js/moment.min.js');
+   //datatables
+
+   mix.copy('node_modules/datatables.net/js/jquery.dataTables.js', 'public/js/jquery.dataTables.js');
+   mix.copy('node_modules/datatables.net-dt/css/jquery.dataTables.css', 'public/css/jquery.dataTables.css');
+   mix.copy('node_modules/datatables.net-dt/images', 'public/images');

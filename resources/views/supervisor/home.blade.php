@@ -44,7 +44,7 @@
  </div>
  <div class="ui link card">
    <div class="content">
-     <div class="header"><a href="#"><i class="announcement icon"></i>Minhas propostas de temas</a></div>
+     <div class="header"><a href="{{url('/feng/supervisores/'.$docente->id.'/meus_temas')}}"><i class="announcement icon"></i>Minhas propostas de temas</a></div>
      <table class="ui small very compact unstackable selectable olive table">
        <thead>
          <tr>
@@ -175,7 +175,9 @@ function model() {
         <div class="field">
           <label>Área Científica do tema</label>
           <select class="ui fluid search dropdown" name="area">
-            <option value="5">Engenharia de software</option>
+            @foreach($docente->areas as $area)
+            <option value="{{$area->id}}">{{$area->designacao}}</option>
+            @endforeach
           </select>
         </div>
 

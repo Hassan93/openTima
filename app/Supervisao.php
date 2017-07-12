@@ -15,7 +15,6 @@ public function docente(){
     return $this->belongsTo('App\Docente', 'supervisor_id');
   }
 public function estudante(){
-
     return $this->belongsTo('App\Estudante', 'estudante_id');
   }
 

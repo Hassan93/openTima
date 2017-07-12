@@ -22,4 +22,8 @@ class Estudante extends Model
     public function supervisaos(){
     	return $this->hasMany('App\Supervisao');
     }
+    public function proposta_temas($value='')
+    {
+      $this->hasMany('App\Proposta_tema');
+    }
 }

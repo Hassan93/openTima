@@ -13,7 +13,7 @@ class Docente extends Model
 
         public function areas()
     {
-    	 return $this->belongsToMany('App\Area', 'area_docentes','docente_id','area_id');
+    	 return $this->belongsToMany('App\Area', 'docente_areas','docente_id','area_id');
     }
     public function supervisaos(){
 
@@ -22,7 +22,7 @@ class Docente extends Model
 
       public function proposta_temas($value='')
       {
-        return $this->hasMany('App\proposta_tema', 'docente_id');
+        return $this->hasMany('App\Proposta_tema', 'docente_id');
 
       }
 }

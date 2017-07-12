@@ -16,10 +16,7 @@ class CreateCandidatoTemasTable extends Migration
         Schema::create('candidato_temas', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('cod_estudante')->unique();
-            $table->integer('estudante_id')->unsigned();
             $table->timestamps();
-
-            $table->foreign('estudante_id')->references('id')->on('estudantes');
 
         });
     }

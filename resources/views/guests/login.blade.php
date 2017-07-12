@@ -1,7 +1,7 @@
 @extends('layouts.guests.guest')
 @section('title', '|Login')
 @section('content')
-<div class="ui middle aligned center aligned grid" style="padding-top: 40px">
+<div class="ui middle aligned center aligned grid" style="padding-top: 0px">
   <div class="column">
     <h2 class="ui image header">
       <div class="content">
@@ -30,9 +30,14 @@
       <div class="ui error message"></div>
 
     </form>
-
     <div class="ui message">
       Esqueceu-se da senha? <a href="http://s.codepen.io/voltron2112/debug/PqrEPM?">Recupere aqui</a>
+    </div>
+    <div class="ui message">
+      Procura por tema? <a href="{{url('/feng/propostas_de_temas')}}">Encontre aqui</a>
+    </div>
+    <div class="ui message">
+      Procura por monografias? <a href="http://s.codepen.io/voltron2112/debug/PqrEPM?">Encontre o nosso respositório</a>
     </div>
   </div>
 </div>

@@ -68,3 +68,12 @@ Route::get('/teste','Supervisao\SupervisorController@home'); //testar a interfac
 
 Route::get('/feng/supervisores/{id}','Supervisao\SupervisorController@home');
 Route::get('/feng/supervisores/{id}/calendario','Supervisao\SupervisorController@visualizar_calendario');
+Route::post('/feng/supervisores/{id}/calendario/create','Supervisao\SupervisorController@registo_de_encontro');
+
+Route::get('/feng/supervisores/{id}/meus_temas','Supervisao\SupervisorController@propostas_de_temas');
+Route::post('/feng/supervisores/{id}/meus_temas/create','Supervisao\SupervisorController@nova_proposta');
+
+
+//Rotas públicas
+Route::get('/feng/propostas_de_temas','Guests\CandidatosTemaController@lista_de_temas');
+Route::post('/feng/propostas_de_temas/candidatar-se/{tema_id}','Guests\CandidatosTemaController@candidatar_se_tema');

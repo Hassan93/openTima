@@ -3,12 +3,44 @@
   @include('partials.admin._verticalnav')
 @stop
 @section('stylesheets')
-    <link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
+    <link rel="stylesheet" href="{{asset('/css/calendar.min.css')}}">
+    <link rel='stylesheet' href="{{asset('/css/fullcalendar.min.css')}}" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.rawgit.com/mdehoog/Semantic-UI-Calendar/76959c6f7d33a527b49be76789e984a0a407350b/dist/calendar.min.css" rel="stylesheet" type="text/css" />
 @stop
 @section('scripts')
-    <script src='lib/jquery.min.js'></script>
-    <script src='lib/moment.min.js'></script>
-    <script src='fullcalendar/fullcalendar.js'></script>
+    <script  src="{{asset('/js/calendar.min.js')}}"></script>
+    <!-- <script src='lib/jquery.min.js'></script>
+    <script src='lib/moment.min.js'></script> -->
+    <script src="{{asset('/js/moment.min.js')}}"></script>
+    <script src="{{asset('/js/fullcalendar.min.js')}}"></script>
+
+
+      <script type="text/javascript">
+      $(document).ready(function() {
+      //  $('#example1').calendar();
+      });
+
+      $(document).ready(function() {
+
+    // page is now ready, initialize the calendar...
+    var e = JSON.parse('{!!$eventos!!}');
+    $('#calendar').fullCalendar({
+  			header: {
+  				left: 'prev,next today',
+  				center: 'title',
+  				right: 'month,agendaWeek,agendaDay'
+  			},
+  			defaultDate: '2017-02-01',
+  			defaultView: 'basicWeek',
+  			editable: true,
+  			events:e
+  		});
+
+
+      });
+      </script>
 @stop
 @section('content')
   <div class="ui grid">
@@ -17,24 +49,9 @@
       <button class="ui teal button" onclick="model()"><i class="plus icon"></i>Criar calendario de supervisão</button>
     </div>
   </div>
-  <div style="margin-top:20px;" id='calendar'></div>
+  <div style="margin-top:20px;" id="calendar"></div>
+
 @endsection
-<script type="text/javascript">
-$(document).ready(function() {
-
-    // page is now ready, initialize the calendar...
-    var date = new Date();
-    var d = date.getDate();
-    var m = date.getMonth();
-    var y = date.getFullYear();
-
-
-    $('#calendar').fullCalendar({
-        // put your options and callbacks here
-    })
-
-});
-</script>
 <script type="text/javascript">
 function dimmer() {
   $('.special.cards .image').dimmer({
@@ -51,35 +68,57 @@ function model() {
   <i class="close icon"></i>
   <div class="header">Criação do calendário de supervisão</div>
   <div class="content">
-    <form class="ui form" action="#" method="post">
+    <form class="ui form" action="{{url('/feng/supervisores/'.$supervisor->id.'/calendario/create')}}" method="post">
         {{ csrf_field() }}
       <div class="field">
         <label>Estudante</label>
-        <select class="ui fluid search dropdown" name="area">
-          <option value="5">Assane</option>
+        <select class="ui fluid search dropdown" name="supervisao_id">
+          @foreach($supervisor->supervisaos as $supervisao)
+          <option value="{{$supervisao->id}}">{{$supervisao->estudante->primeiro_nome.' '.$supervisao->estudante->ultimo_nome}}</option>
+          @endforeach
         </select>
       </div>
-      <div class="two fields">
+      <div class="three fields">
         <div class="field">
-          <label>Data do encontro</label>
-                <input placeholder="data do encontro" type="date" name="data_do_encotro">
+          <label>Dia</label>
+          <div class="ui calendar" id="example1">
+            <div class="ui input left icon">
+              <i class="calendar icon"></i>
+              <input type="text" placeholder="Exemplo:  24" name="dia_do_encontro">
+            </div>
+            </div>
         </div>
         <div class="field">
-          <label>Hora</label>
-                <input placeholder="HH:MM" type="text" name="hora_do_encotro">
+          <label>Mês</label>
+          <div class="ui calendar" id="example3">
+            <div class="ui input left icon">
+              <i class="calendar icon"></i>
+                <input placeholder="Exemplo: 05" type="text" name="mes_do_encotro">
+            </div>
+          </div>
+
+        </div>
+        <div class="field">
+          <label>Ano</label>
+          <div class="ui calendar" id="example3">
+            <div class="ui input left icon">
+              <i class="calendar icon"></i>
+                <input placeholder="Exemplo: 2017" type="text" name="ano_do_encotro">
+            </div>
+          </div>
         </div>
       </div>
       <div class="inline fields">
         <label>Periodicidade dos encontros</label>
         <div class="field">
           <div class="ui radio checkbox">
-            <input name="frequency" checked="checked" type="radio">
+            <input name="frequencia" checked="checked" type="radio" value="7">
             <label>Semanalmente</label>
           </div>
         </div>
         <div class="field">
           <div class="ui radio checkbox">
-            <input name="frequency" type="radio">
+            <input name="frequencia" type="radio" value="14">
             <label>Bissemanalmente</label>
           </div>
         </div>
