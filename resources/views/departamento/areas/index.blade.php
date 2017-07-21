@@ -12,7 +12,7 @@
         <tr>
           <th>#</th>
           <th>Área</th>
-          <th class="right aligned">Acção</th>
+          <th class="right aligned">Acções</th>
         </tr>
       </thead>
       <tbody>

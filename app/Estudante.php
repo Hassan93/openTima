@@ -26,4 +26,9 @@ class Estudante extends Model
     {
       $this->hasMany('App\Proposta_tema');
     }
+
+    public function duvidas($value='')
+    {
+      return $this->hasMany('App\Duvida');
+    }
 }

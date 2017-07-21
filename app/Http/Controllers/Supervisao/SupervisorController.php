@@ -19,6 +19,10 @@ class SupervisorController extends Controller
       $docente = Docente::find($docente_id);
       return view('supervisor.home')->withDocente($docente);
     }
+    public function estatisticas($value='')
+    {
+      return view('departamento.estatisticas.index');
+    }
 
     public function visualizar_calendario($supervisor_id)
     {

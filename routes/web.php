@@ -55,13 +55,25 @@ Route::get('/feuem/{sigla}/estudantes/{id}', 'EstudanteDepartamentoController@es
 
 //rotas estudante
 Route::get('/feng/estudantes/{supervisao_id}', 'Estudante\HomeController@home');
+Route::get('/feng/estudantes/{supervisao_id}/actas', 'Estudante\HomeController@vizualizar_actas');
+Route::post('/feng/estudantes/{supervisao_id}/actas/novaActa', 'Estudante\ActasController@novaActa');
+Route::get('/feng/estudantes/{supervisao_id}/duvidas', 'Estudante\DuvidasController@index');
+//Route::get('/feng/estudantes/{supervisao_id}/duvidas/{duvida_id}', 'Estudante\DuvidasController@show'); ainda por acertar
+Route::get('/feng/estudantes/{supervisao_id}/duvidas/teste', 'Estudante\DuvidasController@show');//apagar depois
+
+
 
 Route::post('/feng/estudantes/{supervisao_id}/actividades/create', 'Estudante\ActividadeController@novaActividade');
 Route::get('/feng/estudantes/actividades/{id}/{estado}', 'Estudante\ActividadeController@actualizar_estado');
+
 });
-//de rotas
+//teste de rotas
 Route::get('/administracao','Admin\HomeController@admin');
 Route::get('/teste','Supervisao\SupervisorController@home'); //testar a interface
+Route::get('/estatisticas','Supervisao\SupervisorController@estatisticas'); //testar a interface
+Route::get('/sms','Testes\SMSController@enviar_sms_teste'); //testar SMS
+
+
 //Route::get('/cadastros','AdministracaoController@cadastros');
 
 //Rotas do docente supervisor
@@ -77,3 +89,4 @@ Route::post('/feng/supervisores/{id}/meus_temas/create','Supervisao\SupervisorCo
 //Rotas públicas
 Route::get('/feng/propostas_de_temas','Guests\CandidatosTemaController@lista_de_temas');
 Route::post('/feng/propostas_de_temas/candidatar-se/{tema_id}','Guests\CandidatosTemaController@candidatar_se_tema');
+Route::get('/feng/monografias','Guests\MonografiasTemaController@monografias');

@@ -37,7 +37,7 @@
       Procura por tema? <a href="{{url('/feng/propostas_de_temas')}}">Encontre aqui</a>
     </div>
     <div class="ui message">
-      Procura por monografias? <a href="http://s.codepen.io/voltron2112/debug/PqrEPM?">Encontre o nosso respositório</a>
+      Procura por monografias? <a href="{{url('/feng/monografias')}}">Encontre o nosso respositório</a>
     </div>
   </div>
 </div>

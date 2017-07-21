@@ -27,3 +27,4 @@ mix.js('resources/assets/js/app.js', 'public/js')
    mix.copy('node_modules/datatables.net/js/jquery.dataTables.js', 'public/js/jquery.dataTables.js');
    mix.copy('node_modules/datatables.net-dt/css/jquery.dataTables.css', 'public/css/jquery.dataTables.css');
    mix.copy('node_modules/datatables.net-dt/images', 'public/images');
+   mix.copy('node_modules/chart.js/dist/Chart.js', 'public/js/Chart.js');

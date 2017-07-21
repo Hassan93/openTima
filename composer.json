@@ -7,10 +7,12 @@
     "require": {
         "php": ">=5.6.4",
         "cartalyst/sentinel": "2.0.*",
+        "kartik-v/bootstrap-fileinput": "@dev",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.3.0",
-        "twbs/bootstrap": "^3.3"
+        "twbs/bootstrap": "^3.3",
+        "telerivet/telerivet-php-client": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

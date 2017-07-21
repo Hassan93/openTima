@@ -1,12 +1,19 @@
 @extends('layouts.departamento')
 @section('side_nav')
-  @include('partials.admin._verticalnav')
+  @include('partials.estudante._verticalnav')
+@stop
+@section('scripts')
+  <script type="text/javascript">
+  $(document).ready(function() {
+    $('#example1').progress();
+  });
+  </script>
 @stop
 @section('content')
 <div class="ui cards">
  <div class="ui link card">
      <div class="content">
-       <div class="header"><a href="#"><i class="folder icon"></i>Actas</a></div>
+       <div class="header"><a href="{{url('/feng/estudantes/'.$supervisao->id.'/actas')}}"><i class="folder icon"></i>Actas</a></div>
        <div class="description">
          <table class="ui small very compact unstackable selectable olive table">
            <thead>
@@ -20,11 +27,11 @@
            <tbody>
              <tr>
                <td><i class="users icon"></i>Validadas</td>
-               <td class="right aligned">5</td>
+               <td class="right aligned">{{$actas_validas}}</td>
              </tr>
              <tr>
                <td><i class="users icon"></i>Submetidas</td>
-               <td class="right aligned">10</td>
+               <td class="right aligned">{{$total_actas}}</td>
              </tr>
            </tbody>
          </table>
@@ -61,7 +68,7 @@
  </div>
  <div class="ui link card">
    <div class="content">
-     <div class="header"><a href="#"><i class="announcement icon"></i>Log de duvidas</a></div>
+     <div class="header"><a href="{{url('/feng/estudantes/'.$supervisao->id.'/duvidas')}}"><i class="announcement icon"></i>Log de duvidas</a></div>
      <table class="ui small very compact unstackable selectable olive table">
        <thead>
          <tr>
@@ -94,12 +101,10 @@
    <div class="ui stackable grid">
          <div class="eight wide column">
            <div class="ui segment">
-             <div class="ui active progress">
-               <div class="bar">
-                 <div class="progress">5%</div>
-               </div>
+             <div class=" {{($progresso < 50 ) ? "ui active red progress": ""}}{{($progresso > 50 ) ? "ui active green progress": ""}}" data-percent="{{$progresso}}" id="example1">
+               <div class="bar">{{$progresso.'%'}}</div>
                <div class="label">Progresso do trabalho</div>
-             </div>
+             </div><div class="progress"></div>
            </div>
          </div>
          <div class="eight wide column">

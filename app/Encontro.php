@@ -10,4 +10,9 @@ class Encontro extends Model
     {
       return $this->belongsTo('App\Supervisao', 'supervisao_id');
     }
+
+    public function acta()
+    {
+      return $this->hasOne('App\Acta');
+    }
 }

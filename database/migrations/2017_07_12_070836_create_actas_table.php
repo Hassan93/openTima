@@ -14,14 +14,12 @@ class CreateActasTable extends Migration
     public function up()
     {
         Schema::create('actas', function (Blueprint $table) {
-           $table->increments('id');
-           $table->integer('actividade_id')->unsigned();
-           $table->integer('encontro_id')->unsigned();
-           $table->string('estado')->default('Pendente');
-           $table->timestamps();
+            $table->increments('id');
+            $table->integer('encontro_id')->unsigned();
+            $table->string('estado')->default('Pendente');
+            $table->timestamps();
 
-       $table->foreign('actividade_id')->references('id')->on('actividades');
-       $table->foreign('encontro_id')->references('id')->on('encontros');
+            $table->foreign('encontro_id')->references('id')->on('encontros');
         });
     }
 

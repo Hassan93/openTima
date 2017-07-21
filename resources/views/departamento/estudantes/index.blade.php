@@ -1,6 +1,6 @@
 @extends('layouts.departamento')
 @section('side_nav')
-  @include('partials.departamento._nav')
+@include('partials.departamento._verticalnav')
 @stop
 @section('content')
 <div class="ui grid">

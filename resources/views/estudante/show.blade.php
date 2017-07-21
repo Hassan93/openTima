@@ -1,6 +1,6 @@
 @extends('layouts.departamento')
 @section('side_nav')
-@include('partials.admin._verticalnav')
+@include('partials.estudante._verticalnav')
 @stop
 @section('content')
  <div class="ui main container">

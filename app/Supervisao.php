@@ -27,4 +27,9 @@ public function estudante(){
   {
     return $this->hasMany('App\Encontro');
   }
+
+  public function actas()
+  {
+    return $this->hasMany('App\Acta');
+  }
 }
