@@ -48,7 +48,6 @@ $(document).ready(function() {
                        <th>O ficheiro</th>
                        <th class="positive right aligned">Estado</th>
                      </thead>
-
                      <tbody>
                        @foreach($supervisao->actas as $acta)
                        <tr class="{{($acta->estado == 'Valida')? "positive aligned": ""}}{{($acta->estado != 'Valida')? "negative aligned": ""}}">

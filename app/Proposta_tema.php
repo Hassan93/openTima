@@ -21,6 +21,6 @@ protected $filable =['designacao','descricao'];
 
   public function candidatos()
 {
- return $this->belongsToMany('App\Candidato', 'canditados_temas','candidato_id','proposta_tema_id');
+ return $this->belongsToMany('App\Candidato_tema', 'candidatos_temas','candidato_id','proposta_tema_id');
 }
 }

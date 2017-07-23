@@ -16,7 +16,7 @@
   <a class="item">
       Notificações<i class="mail outline icon"></i>
   </a>
-  <a class="item">
+  <a class="item" href="{{url('/feuem/'.$departamento->sigla.'/propostas_de_temas')}}">
       Anexos 5<i class="student icon"></i>
   </a>
   <a class="item" href="{{url('/feuem/'.$departamento->sigla.'/estatisticas')}}">

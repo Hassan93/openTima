@@ -38,4 +38,9 @@ public function estudante(){
   {
     return $this->hasOne('App\Monografia');
   }
+  public function defesa($value='')
+  {
+    return $this->hasOne('App\Defesa');
+
+  }
 }

@@ -36,12 +36,17 @@ Route::get('/logout', 'Usuarios\UsuarioController@logout');
 
 //rotas chefe do departamentos
 Route::get('/feuem/{sigla}', 'chefe_depto\HomeController@home');
+Route::get('/feuem/{sigla}/propostas_de_temas', 'chefe_depto\HomeController@propostas_de_temas');
+Route::get('/feuem/{sigla}/propostas_de_temas/{proposta_tema_id}', 'chefe_depto\Proposta_temaController@propostas_de_temas_show');
+Route::post('/feuem/{sigla}/marcacao_de_defesa', 'chefe_depto\HomeController@marcacao_de_defesa');
+
 Route::get('/feuem/{sigla}/estatisticas', 'chefe_depto\EstatisticasController@estatisticas'); //
 Route::get('/feuem/{sigla}/{id}','chefe_depto\HomeController@curso');
 Route::post('/feuem/{sigla}/{id}/temas','chefe_depto\TemasController@novo_tema');
 Route::get('/feuem/{sigla}/{id}/temas/{tema_id}','chefe_depto\TemasController@tema_supervisor');
 Route::post('/feuem/{sigla}/{id}/temas/{tema_id}','chefe_depto\TemasController@tema_supervisor_save');
-Route::get('/feuem/{sigla}/{cursoo_id}/estudantes/{estuante_id}', 'chefe_depto\EstudanteController@detalhes_estudante');
+Route::get('/feuem/{sigla}/{curso_id}/estudantes/{estuante_id}', 'chefe_depto\EstudanteController@detalhes_estudante');
+Route::post('/feuem/{sigla}/{curso_id}/estudantes/{estuante_id}/notificacao_interveniente', 'chefe_depto\EstudanteController@notificacao_interveniente');
 
 
 Route::post('/feuem/{sigla}/{id}/area','chefe_depto\AreaController@nova_area');

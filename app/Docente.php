@@ -25,4 +25,8 @@ class Docente extends Model
         return $this->hasMany('App\Proposta_tema', 'docente_id');
 
       }
+      public function defesas($value='')
+      {
+        return $this->hasMany('App\Docente','oponente_id');
+      }
 }
