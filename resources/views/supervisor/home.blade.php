@@ -79,22 +79,20 @@
        <tr>
          <td>{{$supervisao->estudante->primeiro_nome.' '.$supervisao->estudante->ultimo_nome}}</td>
          <td>{{$supervisao->tema->referencia}}</td>
-         <td>4</td>
+         <td>{{count($supervisao->actas)}}</td>
          <td>2</td>
-         <td>10</td>
+         <td>{{count($supervisao->estudante->duvidas)}}</td>
          <td>
-           <div class="ui active progress">
-             <div class="bar">
-               <div class="progress">5%</div>
-             </div>
-           </div>
+             <div class=" {{($supervisao->progresso < 50 ) ? "ui active red progress": ""}}{{($supervisao->progresso > 50 ) ? "ui active green progress": ""}}" data-percent="{{$supervisao->progresso}}" id="example1">
+               <div class="bar">{{$supervisao->progresso.'%'}}</div>
+             </div><div class="progress"></div>
          </td>
          <td>10.05.2017</td>
          <td>
            <div class="ui animated fade green button" tabindex="0">
              <div class="visible content">Visualizar</div>
              <div class="hidden content">
-               <a href="#"><i class="unhide icon"></i></a>
+               <a href="{{url('/feng/supervisores/'.$docente->id.'/supervisandos/'.$supervisao->id)}}"><i class="unhide icon"></i></a>
              </div>
            </div>
          </td>

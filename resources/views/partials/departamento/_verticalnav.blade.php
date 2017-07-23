@@ -19,7 +19,7 @@
   <a class="item">
       Anexos 5<i class="student icon"></i>
   </a>
-  <a class="item">
+  <a class="item" href="{{url('/feuem/'.$departamento->sigla.'/estatisticas')}}">
     Estatísticas<i class="bar chart icon"></i>
   </a>
   <a class="item">

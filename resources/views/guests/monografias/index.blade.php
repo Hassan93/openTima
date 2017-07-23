@@ -39,23 +39,25 @@
            <th class="right aligned">Encontre aqui o pdf da monografia</th>
          </thead>
          <tbody>
+           @foreach($monografias as $monografia)
              <tr>
                <td>
                  <h4 class="ui image header">
                    <img src="/images/avatar2/small/lena.png" class="ui mini rounded image">
                    <div class="content">
-                     Tema da monografia
+                     {{$monografia->supervisao->tema->designacao}}
                      <div class="sub header">
-                       Autor: Assane<br/>
-                       Supervisor: Vali Issufo
+                       Autor: {{$monografia->supervisao->estudante->primeiro_nome.' '.$monografia->supervisao->estudante->ultimo_nome}}<br/>
+                       Supervisor: {{$monografia->supervisao->docente->primeiro_nome.' '.$monografia->supervisao->docente->ultimo_nome}}
                      </div>
                  </div>
                 </h4>
               </td>
              <td class="right aligned">
-              <a href="#"><i class="download icon"></i></a>
+              <a href="{{url('/baixar_monografia/'.$monografia->id)}}"><i class="download icon"></i></a>
              </td>
            </tr>
+           @endforeach
        </tbody>
      </table>
 </div>

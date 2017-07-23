@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Supervisao extends Model
 {
+    protected $fillable = ['progresso', 'estado'];
   public function tema(){
 
     return $this->belongsTo('App\Tema', 'tema_id');
@@ -31,5 +32,10 @@ public function estudante(){
   public function actas()
   {
     return $this->hasMany('App\Acta');
+  }
+
+  public function monografia($value='')
+  {
+    return $this->hasOne('App\Monografia');
   }
 }

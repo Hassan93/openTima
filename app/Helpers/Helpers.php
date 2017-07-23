@@ -65,4 +65,22 @@ class Helpers {
 			$message->to($data['to'], '')->subject('TEMA VALIDADO');
 		});
 	}
+
+static function enviar_sms_teste($destinatario, $mensagem)
+	{
+		$apiKey = 'ez4kXuPjt2OCwRMQx41vDrLIH75Fr90U';
+		$projectId = 'PJ5688bca48b7fee27';
+		$client = new \GuzzleHttp\Client();
+		$url = sprintf("https://api.telerivet.com/v1/projects/%s/messages/send", $projectId);
+
+
+		$response = $client->request('POST', $url, [
+			'json' => [
+				'to_number' => $destinatario,
+				'content' => $mensagem
+			],
+			'header' => ['Content-Type' => 'application/json'],
+			'auth' => ['ez4kXuPjt2OCwRMQx41vDrLIH75Fr90U', null]
+		]);
+	}
 }

@@ -36,6 +36,7 @@ Route::get('/logout', 'Usuarios\UsuarioController@logout');
 
 //rotas chefe do departamentos
 Route::get('/feuem/{sigla}', 'chefe_depto\HomeController@home');
+Route::get('/feuem/{sigla}/estatisticas', 'chefe_depto\EstatisticasController@estatisticas'); //
 Route::get('/feuem/{sigla}/{id}','chefe_depto\HomeController@curso');
 Route::post('/feuem/{sigla}/{id}/temas','chefe_depto\TemasController@novo_tema');
 Route::get('/feuem/{sigla}/{id}/temas/{tema_id}','chefe_depto\TemasController@tema_supervisor');
@@ -55,11 +56,16 @@ Route::get('/feuem/{sigla}/estudantes/{id}', 'EstudanteDepartamentoController@es
 
 //rotas estudante
 Route::get('/feng/estudantes/{supervisao_id}', 'Estudante\HomeController@home');
+Route::post('/feng/estudantes/{supervisao_id}/monografia', 'Estudante\HomeController@monografia');
+
 Route::get('/feng/estudantes/{supervisao_id}/actas', 'Estudante\HomeController@vizualizar_actas');
 Route::post('/feng/estudantes/{supervisao_id}/actas/novaActa', 'Estudante\ActasController@novaActa');
 Route::get('/feng/estudantes/{supervisao_id}/duvidas', 'Estudante\DuvidasController@index');
-//Route::get('/feng/estudantes/{supervisao_id}/duvidas/{duvida_id}', 'Estudante\DuvidasController@show'); ainda por acertar
-Route::get('/feng/estudantes/{supervisao_id}/duvidas/teste', 'Estudante\DuvidasController@show');//apagar depois
+Route::post('/feng/estudantes/{supervisao_id}/duvidas/registar_duvida', 'Estudante\DuvidasController@registar_duvida');
+Route::get('/feng/estudantes/{supervisao_id}/duvidas/{duvida_id}', 'Estudante\DuvidasController@show');
+
+Route::post('/feng/estudantes/{supervisao_id}/duvidas/{duvida_id}/resposta', 'Estudante\DuvidasController@registar_resposta');
+
 
 
 
@@ -71,7 +77,10 @@ Route::get('/feng/estudantes/actividades/{id}/{estado}', 'Estudante\ActividadeCo
 Route::get('/administracao','Admin\HomeController@admin');
 Route::get('/teste','Supervisao\SupervisorController@home'); //testar a interface
 Route::get('/estatisticas','Supervisao\SupervisorController@estatisticas'); //testar a interface
-Route::get('/sms','Testes\SMSController@enviar_sms_teste'); //testar SMS
+//Route::get('/sms','Testes\SMSController@enviar_sms_teste'); //testar SMS
+Route::get('/baixar/{acta_id}','Ficheiros\FicheirosController@show')->name('download');
+Route::get('/baixar_monografia/{monografia_id}','Ficheiros\FicheirosController@baixar_monografia');
+
 
 
 //Route::get('/cadastros','AdministracaoController@cadastros');
@@ -79,6 +88,10 @@ Route::get('/sms','Testes\SMSController@enviar_sms_teste'); //testar SMS
 //Rotas do docente supervisor
 
 Route::get('/feng/supervisores/{id}','Supervisao\SupervisorController@home');
+Route::get('/feng/supervisores/{id}/supervisandos/{supervisao_id}','Supervisao\SupervisandosController@show');
+Route::post('/feng/supervisores/{id}/supervisandos/{supervisao_id}/actas/validacao','Supervisao\SupervisandosController@validar_actas');
+Route::post('/feng/supervisores/{id}/supervisandos/{supervisao_id}/monografias/validacao','Supervisao\SupervisandosController@validar_monografia');
+
 Route::get('/feng/supervisores/{id}/calendario','Supervisao\SupervisorController@visualizar_calendario');
 Route::post('/feng/supervisores/{id}/calendario/create','Supervisao\SupervisorController@registo_de_encontro');
 

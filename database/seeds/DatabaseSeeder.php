@@ -42,25 +42,25 @@ class DatabaseSeeder extends Seeder
 
     //registar categorias de duvidas
 
-    $categoria_1 = new Categoria;
-    $categoria_1->designacao = 'Metodologias de investigação';
-    $categoria_1->descricao  = 'Técnicas de pesquisa';
-    $categoria_1->save();
+    // $categoria_1 = new Categoria;
+    // $categoria_1->designacao = 'Metodologias de investigação';
+    // $categoria_1->descricao  = 'Técnicas de pesquisa';
+    // $categoria_1->save();
 
     $categoria_2 = new Categoria;
     $categoria_2->designacao = 'Técnicas de escrita';
-    $categoria_1->descricao  = 'EScrever bem é uma arte';
-    $categoria_1->save();
+    $categoria_2->descricao  = 'EScrever bem é uma arte';
+    $categoria_2->save();
 
-    $categoria_1 = new Categoria;
-    $categoria_1->designacao = 'Técnica';
-    $categoria_1->descricao  = 'Duvida virada a uma area de actuação';
-    $categoria_1->save();
-
-    $categoria_1 = new Categoria;
-    $categoria_1->designacao = 'Outras';
-    $categoria_1->descricao  = 'Duvida virada a uma area de actuação';
-    $categoria_1->save();
+    // $categoria_1 = new Categoria;
+    // $categoria_1->designacao = 'Técnica';
+    // $categoria_1->descricao  = 'Duvida virada a uma area de actuação';
+    // $categoria_1->save();
+    //
+    // $categoria_1 = new Categoria;
+    // $categoria_1->designacao = 'Outras';
+    // $categoria_1->descricao  = 'Duvida virada a uma area de actuação';
+    // $categoria_1->save();
 
   }
 

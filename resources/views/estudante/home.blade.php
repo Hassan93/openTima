@@ -54,8 +54,13 @@
 
            <tbody>
              <tr>
-               <td><i class="student icon"></i>Revistas</td>
-               <td class="right aligned">5</td>
+               <td>
+                 @if($supervisao->progresso < 80)
+                 <button class="ui teal button" onclick="model()" disabled="true"><i class="student icon"></i>Submeter relatório final</button>
+                 @else
+                 <button class="ui teal button" onclick="model_monografia()"><i class="student icon"></i>Submeter relatório final</button>
+                 @endif
+              </td>
              </tr>
              <tr>
                <td><i class="student icon"></i>Submetidas</td>
@@ -101,8 +106,8 @@
    <div class="ui stackable grid">
          <div class="eight wide column">
            <div class="ui segment">
-             <div class=" {{($progresso < 50 ) ? "ui active red progress": ""}}{{($progresso > 50 ) ? "ui active green progress": ""}}" data-percent="{{$progresso}}" id="example1">
-               <div class="bar">{{$progresso.'%'}}</div>
+             <div class=" {{($supervisao->progresso < 50 ) ? "ui active red progress": ""}}{{($supervisao->progresso > 50 ) ? "ui active green progress": ""}}" data-percent="{{$supervisao->progresso}}" id="example1">
+               <div class="bar">{{$supervisao->progresso.'%'}}</div>
                <div class="label">Progresso do trabalho</div>
              </div><div class="progress"></div>
            </div>
@@ -224,6 +229,11 @@ function model() {
   $('.ui.small.modal')
 .modal('show');
 }
+
+function model_monografia() {
+  $('.ui.basic.modal')
+.modal('show');
+}
 </script>
 <div class="ui small modal">
   <i class="close icon"></i>
@@ -267,6 +277,26 @@ function model() {
         <div class="field">
             <label>Descrição da actividade</label>
             <textarea name="descricao"></textarea>
+        </div>
+        <div class="field">
+          <button type="submit" class="fluid ui green button" onsubmit="">Gravar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="ui basic modal">
+  <i class="close icon"></i>
+  <div class="header">Sumbeter o relatório final do seu trabalho</div>
+  <div class="content">
+    <form class="ui form" action="{{url('/feng/estudantes/'.$supervisao->id.'/monografia')}}" method="post" enctype="multipart/form-data">
+        {{ csrf_field() }}
+        <div class="field">
+              <label for="file" class="ui icon button">
+                  <i class="Upload icon"></i>
+                  Anexar o ficheiro da acta em pdf</label>
+              <input type="file" id="file" style="display:none" name="file">
         </div>
         <div class="field">
           <button type="submit" class="fluid ui green button" onsubmit="">Gravar</button>

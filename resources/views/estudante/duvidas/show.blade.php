@@ -34,9 +34,9 @@ function model() {
      </div>
      <div class="twelve wide column">
        <div class="content">
-          <a class="item"><h2>Não consigo iniciar um projecto de laravel</h2></a>
+          <a class="item"><h2>{{$duvida->designacao}}</h2></a>
          <div class="sub header">
-           <a class="ui teal label"><i class="unhide icon">22</i><i class="Info Circle icon">2 respostas</i></a>
+           <a class="ui teal label"><i class="unhide icon">22</i><i class="Info Circle icon">{{count($duvida->respostas)}} respostas</i></a>
          </div>
        </div>
       </div>
@@ -51,6 +51,7 @@ function model() {
                <th class="right aligned">detalhes</th>
              </thead>
              <tbody>
+               @foreach($duvida->respostas as $resposta)
                  <tr>
                    <td>
                        <div class="content">
@@ -62,7 +63,7 @@ function model() {
                     </td>
                      <td>
                        <div class="content">
-                          Faça xyz
+                          {{$resposta->resposta}}
                           <div class="sub header">
                             <a class="ui teal label"><i class="unhide icon">22</i><i class="Thumbs Up icon">2</i></a>
                           </div>
@@ -71,11 +72,14 @@ function model() {
                   <td class="right aligned">
                     <a class="ui basic image label">
                       <img src="/images/avatar/small/veronika.jpg">
-                      Assane
-                      <div class="detail">respondeu <br/> 12.06.2017 <br/>pelas 10h</div>
+                      {{$resposta->usuario->first_name}}
+                      <div class="detail">respondeu em:<br/> {{$resposta->created_at}}</div>
                     </a>
                  </td>
                </tr>
+               @endforeach
+             <tbody>
+          </table>
           </div>
    </div>
 </div>
@@ -84,7 +88,7 @@ function model() {
   <i class="close icon"></i>
   <div class="header">Esclarecendo uma Dúvida</div>
   <div class="content">
-    <form class="ui form" action="{{url('/feng/estudantes/'.$supervisao->id.'/actas/novaActa')}}" method="post">
+    <form class="ui form" action="{{url('/feng/estudantes/'.$supervisao->id.'/duvidas/'.$duvida->id.'/resposta')}}" method="post">
         {{ csrf_field() }}
           <input type="hidden" name="duvida_id" id="duvida_id" >
         <div class="field">

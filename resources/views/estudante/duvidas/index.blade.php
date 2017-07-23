@@ -17,7 +17,6 @@ function tab(){
   $('.secondary.menu .item')
     .tab();
 }
-
 function model() {
   $('.ui.small.modal')
 .modal('show');
@@ -48,110 +47,38 @@ function model() {
                <th class="right aligned">detalhes</th>
              </thead>
              <tbody>
+               @foreach($duvidas as $duvida)
+                @if($duvida->estado == 'Pública')
                  <tr>
                    <td>
                      <h4 class="ui image header">
                        <div class="">
-                          <a class="ui green circular label">2 Respostas</a><br/>
+                          <a class="ui green circular label">{{count($duvida->respostas)}} Respostas</a><br/>
                           <a class="ui pointing teal basic label">22 Views</a>
                        </div>
                     </h4>
                   </td>
                   <td>
                     <div class="content">
-                      Não consigo iniciar um projecto de laravel
+                      {{$duvida->designacao}}
                       <div class="sub header">
-                        <a class="ui teal label">Técnica</a>
+                        @foreach($duvida->categorias as $categoria)
+                        <a class="ui teal label">{{$categoria->designacao}}</a>
+                        @endforeach
                       </div>
                     </div>
                   </td>
                   <td class="right aligned">
-                    <a class="ui teal basic button" href="{{url('/feng/estudantes/'.$supervisao->id.'/duvidas/teste')}}"><i class="unhide icon"></i></a><br/>
-                    <a class="ui basic image label">
-                      <img src="/images/avatar/small/veronika.jpg">
-                      Assane
-                      <div class="detail">perguntou <br/> 12.06.2017 <br/>pelas 10h</div>
+                    <a class="ui teal basic button" href="{{url('/feng/estudantes/'.$supervisao->id.'/duvidas/'.$duvida->id)}}"><i class="unhide icon"></i></a><br/>
+                    <a class="ui label">
+                      <img class="ui small circular centered image" src="{{ App\User::get_gravatar(Sentinel::getUser()->email) }}">
+                      {{$duvida->estudante->primeiro_nome}}<br/>
+                      <div class="detail">perguntou em:<br/> {{$duvida->created_at}}</div>
                     </a>
                  </td>
                </tr>
-               <tr>
-                 <td>
-                   <h4 class="ui image header">
-                     <div class="">
-                        <a class="ui green circular label">2 Respostas</a><br/>
-                        <a class="ui pointing teal basic label">22 Views</a>
-                     </div>
-                  </h4>
-                </td>
-                <td>
-                  <div class="content">
-                    Não consigo iniciar um projecto de laravel
-                    <div class="sub header">
-                      <a class="ui teal label">Técnica</a>
-                    </div>
-                  </div>
-                </td>
-                <td class="right aligned">
-                  <a class="ui teal basic button" href="{{url('/feng/estudantes/'.$supervisao->id.'/duvidas/teste')}}"><i class="unhide icon"></i></a><br/>
-                  <a class="ui basic image label">
-                    <img src="/images/avatar/small/veronika.jpg">
-                    Assane
-                    <div class="detail">perguntou <br/> 12.06.2017 <br/>pelas 10h</div>
-                  </a>
-               </td>
-             </tr>
-             <tr>
-               <td>
-                 <h4 class="ui image header">
-                   <div class="">
-                      <a class="ui green circular label">2 Respostas</a><br/>
-                      <a class="ui pointing teal basic label">22 Views</a>
-                   </div>
-                </h4>
-              </td>
-              <td>
-                <div class="content">
-                  Não consigo iniciar um projecto de laravel
-                  <div class="sub header">
-                    <a class="ui teal label">Técnica</a>
-                  </div>
-                </div>
-              </td>
-              <td class="right aligned">
-                <a class="ui teal basic button" href="{{url('/feng/estudantes/'.$supervisao->id.'/duvidas/teste')}}"><i class="unhide icon"></i></a><br/>
-                <a class="ui basic image label">
-                  <img src="/images/avatar/small/veronika.jpg">
-                  Assane
-                  <div class="detail">perguntou <br/> 12.06.2017 <br/>pelas 10h</div>
-                </a>
-             </td>
-           </tr>
-           <tr>
-             <td>
-               <h4 class="ui image header">
-                 <div class="">
-                    <a class="ui green circular label">2 Respostas</a><br/>
-                    <a class="ui pointing teal basic label">22 Views</a>
-                 </div>
-              </h4>
-            </td>
-            <td>
-              <div class="content">
-                Não consigo iniciar um projecto de laravel
-                <div class="sub header">
-                  <a class="ui teal label">Técnica</a>
-                </div>
-              </div>
-            </td>
-            <td class="right aligned">
-              <a class="ui teal basic button" href="{{url('/feng/estudantes/'.$supervisao->id.'/duvidas/teste')}}"><i class="unhide icon"></i></a><br/>
-              <a class="ui basic image label">
-                <img src="/images/avatar/small/veronika.jpg">
-                Assane
-                <div class="detail">perguntou <br/> 12.06.2017 <br/>pelas 10h</div>
-              </a>
-           </td>
-         </tr>
+               @endif
+               @endforeach
            </tbody>
          </table>
       </div>
@@ -278,51 +205,38 @@ function model() {
              <th class="right aligned">detalhes</th>
            </thead>
            <tbody>
+             @foreach($duvidas as $duvida)
+              @if($duvida->estado != 'Pública')
                <tr>
                  <td>
                    <h4 class="ui image header">
                      <div class="">
-                        <a class="ui green circular label">2 Respostas</a><br/>
+                        <a class="ui green circular label">{{count($duvida->respostas)}} Respostas</a><br/>
                         <a class="ui pointing teal basic label">22 Views</a>
                      </div>
                   </h4>
                 </td>
                 <td>
                   <div class="content">
-                    Não consigo iniciar um projecto de laravel
+                    {{$duvida->designacao}}
                     <div class="sub header">
-                      <a class="ui teal label">Técnica</a>
+                      @foreach($duvida->categorias as $categoria)
+                      <a class="ui teal label">{{$categoria->designacao}}</a>
+                      @endforeach
                     </div>
                   </div>
                 </td>
                 <td class="right aligned">
-                  <a class="ui teal basic button" href="{{url('/feng/estudantes/'.$supervisao->id.'/duvidas/teste')}}"><i class="unhide icon"></i></a><br/>
+                  <a class="ui teal basic button" href="{{url('/feng/estudantes/'.$supervisao->id.'/duvidas/'.$duvida->id)}}"><i class="unhide icon"></i></a><br/>
+                  <a class="ui label">
+                    <img class="ui small circular centered image" src="{{ App\User::get_gravatar(Sentinel::getUser()->email) }}">
+                    {{$duvida->estudante->primeiro_nome}}<br/>
+                    <div class="detail">perguntou em:<br/> {{$duvida->created_at}}</div>
+                  </a>
                </td>
              </tr>
-             <tr>
-               <td>
-                 <h4 class="ui image header">
-                   <div class="">
-                      <a class="ui green circular label">2 Respostas</a><br/>
-                      <a class="ui pointing teal basic label">22 Views</a>
-                   </div>
-                </h4>
-              </td>
-              <td>
-                <div class="content">
-                  Não consigo iniciar um projecto de laravel
-                  <div class="sub header">
-                    <a class="ui teal label">Técnica</a>
-                  </div>
-                </div>
-              </td>
-              <td class="right aligned">
-                <button class="ui teal basic button" onclick="model2()"><i class="plus icon"></i>Responta</button>
-             </td>
-           </tr>
-           </td>
-         </tr>
-
+             @endif
+             @endforeach
          </tbody>
        </table>
       </div>
@@ -336,31 +250,31 @@ function model() {
   <i class="close icon"></i>
   <div class="header">Dúvida nova</div>
   <div class="content">
-    <form class="ui form" action="{{url('/feng/estudantes/'.$supervisao->id.'/actas/novaActa')}}" method="post">
+    <form class="ui form" action="{{url('/feng/estudantes/'.$supervisao->id.'/duvidas/registar_duvida')}}" method="post">
         {{ csrf_field() }}
         <div class="field">
             <label>Género da dúvida</label>
-            <select multiple="" class="ui dropdown" name="categoria">
-              <option value="1">Métodos de pesquisa</option>
-              <option value="2">Revisão de literatura</option>
-              <option value="3">Técnica</option>
+            <select multiple="" class="ui dropdown" name="categorias[]">
+              @foreach($categorias as $categoria)
+              <option value="{{$categoria->id}}">{{$categoria->designacao}}</option>
+              @endforeach
             </select>
         </div>
         <div class="field">
-              <label for="duvida" class="ui icon button">
+              <label for="duvida" class="ui icon button">Dúvida</label>
               <input type="text" id="duvida" name="duvida">
         </div>
         <div class="inline fields">
           <label>Tornar pública a sua dúvida?</label>
           <div class="field">
             <div class="ui radio checkbox">
-              <input name="frequencia" checked="checked" type="radio" value="sim">
+              <input name="estado" checked="checked" type="radio" value="sim">
               <label>Sim</label>
             </div>
           </div>
           <div class="field">
             <div class="ui radio checkbox">
-              <input name="frequencia" type="radio" value="nao">
+              <input name="estado" type="radio" value="nao">
               <label>Não, só quero partilhar com meu supervisor.</label>
             </div>
           </div>

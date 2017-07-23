@@ -31,7 +31,7 @@
               <td>{{$acta->estado}}</td>
               <td class="right aligned">
                 <a class="ui positive button"><i class="pencil icon"></i></a>
-                <a class="ui positive button"><i class="download icon"></i></a>
+                <a class="ui positive button" href="{{route('download', ['id'=>$acta->id])}}"><i class="download icon"></i></a>
               </td>
             </tr>
           @endforeach
@@ -60,7 +60,7 @@ function model() {
   <i class="close icon"></i>
   <div class="header">Nova Acta</div>
   <div class="content">
-    <form class="ui form" action="{{url('/feng/estudantes/'.$supervisao->id.'/actas/novaActa')}}" method="post">
+    <form class="ui form" action="{{url('/feng/estudantes/'.$supervisao->id.'/actas/novaActa')}}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="field">
           <label>Data do encontro</label>
