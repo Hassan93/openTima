@@ -2,6 +2,17 @@
 @section('side_nav')
   @include('partials.admin._verticalnav')
 @stop
+@section('scripts')
+  <script type="text/javascript">
+  function progresso(id) {
+    $('#example'+id).progress();
+  }
+
+  // $(document).ready(function() {
+  //
+  //   $('#example1').progress();
+  // });
+  </script>
 @section('content')
 <div class="ui cards">
  <div class="ui link card">
@@ -82,8 +93,8 @@
          <td>{{count($supervisao->actas)}}</td>
          <td>2</td>
          <td>{{count($supervisao->estudante->duvidas)}}</td>
-         <td>
-             <div class=" {{($supervisao->progresso < 50 ) ? "ui active red progress": ""}}{{($supervisao->progresso > 50 ) ? "ui active green progress": ""}}" data-percent="{{$supervisao->progresso}}" id="example1">
+         <td onclick="progresso({{$supervisao->id}})">
+            <div class=" {{($supervisao->progresso < 50 ) ? "ui active red progress": ""}}{{($supervisao->progresso > 50 ) ? "ui active green progress": ""}}" data-percent="{{$supervisao->progresso}}" id="example{{$supervisao->id}}">
                <div class="bar">{{$supervisao->progresso.'%'}}</div>
              </div><div class="progress"></div>
          </td>
@@ -98,53 +109,7 @@
          </td>
        </tr>
        @endforeach
-       <tr>
-         <td>Michaque</td>
-         <td>2017EITLD4</td>
-         <td>4</td>
-         <td>2</td>
-         <td>10</td>
-         <td>
-           <div class="ui active progress">
-             <div class="bar">
-               <div class="progress">5%</div>
-             </div>
-           </div>
-         </td>
-         <td>10.05.2017</td>
-         <td>
-           <div class="ui animated fade green button" tabindex="0">
-             <div class="visible content">Visualizar</div>
-             <div class="hidden content">
-               <a href="#"><i class="unhide icon"></i></a>
-             </div>
-           </div>
-         </td>
-       </tr>
-       <tr>
-         <td>Justino</td>
-         <td>2017EITLD4</td>
-         <td>4</td>
-         <td>2</td>
-         <td>10</td>
-         <td>
-           <div class="ui active progress">
-             <div class="bar">
-               <div class="progress">5%</div>
-             </div>
-           </div>
-         </td>
-         <td>10.05.2017</td>
-         <td>
-           <div class="ui animated fade green button" tabindex="0">
-             <div class="visible content">Visualizar</div>
-             <div class="hidden content">
-               <a href="#"><i class="unhide icon"></i></a>
-             </div>
-           </div>
-         </td>
-       </tr>
-     </tbody>
+      </tbody>
    </table>
 </div>
 @endsection

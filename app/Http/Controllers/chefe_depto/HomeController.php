@@ -18,10 +18,11 @@ class HomeController extends Controller
     }
     public function curso($sigla, $id)
     {
+      $departamento = Departamento::where('sigla', '=', $sigla)->first();
       $curso = Curso::find($id);
       $temas = Tema::orderBy('id', 'desc')->get();
 
     return view('departamento.cursos.home')->withCurso($curso)
-                                           ->withTemas($temas);
+                                           ->withTemas($temas)->withDepartamento($departamento);
     }
 }

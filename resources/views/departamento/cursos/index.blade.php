@@ -33,7 +33,6 @@
       <tr>
         <th>Estudante</th>
         <th>Referencia do tema</th>
-        <th>Tema</th>
         <th>Supervisor</th>
         <th>Progresso</th>
         <th class="right aligned">Detalhes</th>
@@ -47,22 +46,19 @@
           {{$tema->estudante->primeiro_nome.' '.$tema->estudante->ultimo_nome}}
         </td>
         <td>{{$tema->referencia}}</td>
-        <td>{{$tema->designacao}}</td>
-        @foreach($tema->supervisaos as $supervisor)
-        @if($supervisor->papel == 'supervisor')
+        @foreach($tema->supervisaos as $supervisao)
+        @if($supervisao->papel == 'supervisor')
           <td>
-            <img class="ui avatar image" src="{{ App\User::get_gravatar($supervisor->docente->email) }}">
-            {{$supervisor->docente->primeiro_nome.' '.$supervisor->docente->ultimo_nome}}
+            <img class="ui avatar image" src="{{ App\User::get_gravatar($supervisao->docente->email) }}">
+            {{$supervisao->docente->primeiro_nome.' '.$supervisao->docente->ultimo_nome}}
+          </td>
+          <td onclick="progresso({{$supervisao->id}})">
+             <div class=" {{($supervisao->progresso < 50 ) ? "ui active red progress": ""}}{{($supervisao->progresso > 50 ) ? "ui active green progress": ""}}" data-percent="{{$supervisao->progresso}}" id="example{{$supervisao->id}}">
+                <div class="bar">{{$supervisao->progresso.'%'}}</div>
+              </div><div class="progress"></div>
           </td>
         @endif
         @endforeach
-        <td>
-          <div class="ui active progress">
-            <div class="bar">
-              <div class="progress">5%</div>
-            </div>
-          </div>
-       </td>
         <td class="right aligned">
           <div class="ui animated fade button" tabindex="0">
             <div class="visible content">Visualizar</div>

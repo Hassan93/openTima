@@ -50,20 +50,20 @@ class SupervisandosController extends Controller
 
       if ($request->input('estado')=='Valida') {
         $monografia->update(['estado'=>'Valida']);
-        // $mensagem_chefe = 'Caro Chefe do '.$docente->departamento->sigla.'o supervisor do tema com ref: '.$supervisao->tema->referencia.' emitiu o parecer da monografia';
-        // Helpers::enviar_sms_teste($docente->departamento->chefe->celular,$mensagem_chefe); //Notifica-se ao chefe do departamento
-        //
-        // $mensagem_estudante= 'Caro Estudante, o supervisor emitiu um parecer positivo da sua monografia! Encontre no opentima';
-        // Helpers::enviar_sms_teste($supervisao->estudante->celular,$mensagem_estudante); //Notifica-se ao estudate
+        $mensagem_chefe = 'Caro Chefe do '.$docente->departamento->sigla.'o supervisor do tema com ref: '.$supervisao->tema->referencia.' emitiu o parecer da monografia';
+        Helpers::enviar_sms_teste($docente->departamento->chefe->celular,$mensagem_chefe); //Notifica-se ao chefe do departamento
+
+        $mensagem_estudante= 'Caro Estudante, o supervisor emitiu um parecer positivo da sua monografia! Encontre no opentima';
+        Helpers::enviar_sms_teste($supervisao->estudante->celular,$mensagem_estudante); //Notifica-se ao estudate
 
         $supervisao->update(['estado'=>'Terminada']); //Declaram-se terminadas as actividades de supervisão
       }else{
         $monografia->update(['estado'=>'Invalida']);
-        // $mensagem_chefe = 'Caro Chefe do '.$docente->departamento->sigla.'o supervisor do tema com ref: '.$supervisao->tema->referencia.' emitiu o parecer negativo a monografia';
-        // Helpers::enviar_sms_teste($docente->departamento->chefe->celular,$mensagem_chefe); //Notifica-se ao chefe do departamento
-        //
-        // $mensagem_estudante= 'Caro Estudante, o supervisor emitiu um parecer negativo da sua monografia! Encontre no opentima';
-        // Helpers::enviar_sms_teste($supervisao->estudante->celular,$mensagem_estudante); //Notifica-se ao estudate
+        $mensagem_chefe = 'Caro Chefe do '.$docente->departamento->sigla.'o supervisor do tema com ref: '.$supervisao->tema->referencia.' emitiu o parecer negativo a monografia';
+        Helpers::enviar_sms_teste($docente->departamento->chefe->celular,$mensagem_chefe); //Notifica-se ao chefe do departamento
+
+        $mensagem_estudante= 'Caro Estudante, o supervisor emitiu um parecer negativo da sua monografia! Encontre no opentima';
+        Helpers::enviar_sms_teste($supervisao->estudante->celular,$mensagem_estudante); //Notifica-se ao estudate
 
       }
       return redirect(url('/feng/supervisores/'.$docente->id.'/supervisandos/'.$supervisao->id));

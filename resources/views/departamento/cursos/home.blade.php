@@ -2,6 +2,13 @@
 @section('side_nav')
 @include('partials.departamento._verticalnav')
 @stop
+@section('scripts')
+<script type="text/javascript">
+function progresso(id) {
+  $('#example'+id).progress();
+}
+</script>
+@stop
 @section('content')
 <div class="ui grid">
     <div class="four column row">

@@ -2,6 +2,13 @@
 @section('side_nav')
 @include('partials.departamento._verticalnav')
 @stop
+@section('scripts')
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#example1').progress();
+});
+</script>
+@stop
 @section('content')
 <div class="ui grid">
   <div class="four column row">
@@ -18,21 +25,18 @@
   <div class="ui stackable grid">
         <div class="twelve wide column">
           <div class="ui segment">
-            <div class="ui active progress">
-              <div class="bar">
-                <div class="progress">5%</div>
-              </div>
-              <div class="label">Progresso do trabalho</div>
-            </div>
+            <div class=" {{($supervisao->progresso < 50 ) ? "ui active red progress": ""}}{{($supervisao->progresso > 50 ) ? "ui active green progress": ""}}" data-percent="{{$supervisao->progresso}}" id="example1">
+               <div class="bar">{{$supervisao->progresso.'%'}}</div>
+             </div><div class="progress"></div>
           </div>
         </div>
         <div class="four wide column">
-          <button type="button" name="notificacao"class="ui teal large button"><i class="inbox icon"></i>Notificar aqui</button>
+          <button type="button" name="notificacao" class="ui teal large button" onclick="model()"><i class="inbox icon"></i>Notificar aqui</button>
         </div>
    </div>
    <div class="ui horizontal divider"> </div>
    <div class="ui grid">
-       <div class="six wide column">
+       <div class="eight wide column">
          <div class="ui segment">
          <div class="ui header">
           <i><b>Actas Submetidas</b></i>
@@ -40,47 +44,26 @@
          <div class="content">
                    <table class="ui selectable olive table">
                      <thead>
+                       <th>Designação</th>
+                       <th>O ficheiro</th>
+                       <th class="positive right aligned">Estado</th>
                      </thead>
 
                      <tbody>
-                       <tr>
-                         <td><i class="file icon"></i>1</td>
-                         <td><a href="#">Primeira acta</a></td>
-                         <td class="positive right aligned"><i>Valida</i></td>
+                       @foreach($supervisao->actas as $acta)
+                       <tr class="{{($acta->estado == 'Valida')? "positive aligned": ""}}{{($acta->estado != 'Valida')? "negative aligned": ""}}">
+                         <td><a href="#"> <i class="file icon"></i>{{$acta->id.'a'}} acta</a></td>
+                         <td><a href="{{route('download', ['acta_id'=>$acta->id])}}"><i class="file icon"></i></a></td>
+                         <td><i>{{$acta->estado}}</i></td>
                        </tr>
-                       <tr>
-                         <td><i class="file icon"></i>2</td>
-                         <td><a href="#">Segunda acta</a></td>
-                         <td class="negative right aligned"><i class="ui danger">Inválida</i></td>
-                       </tr>
-                       <tr>
-                         <td><i class="file icon"></i>3</td>
-                         <td><a href="#">Terceira acta</a></td>
-                         <td class="right aligned"><i class="ui danger">pendente</i></td>
-                       </tr>
-                       <tr>
-                         <td><i class="file icon"></i>4</td>
-                         <td><a href="#">Quarta acta</a></td>
-                         <td class="right aligned"><i class="ui danger">pendente</i></td>
-                       </tr>
-                       <tr>
-                         <td><i class="file icon"></i>5</td>
-                         <td><a href="#">Quinta acta</a></td>
-                         <td class="right aligned"><i class="ui danger">pendente</i></td>
-                       </tr>
-                       <tr>
-                         <td><i class="file icon"></i>6</td>
-                         <td><a href="#">Sexta acta</a></td>
-                         <td class="right aligned"><i class="ui danger">pendente</i></td>
-                       </tr>
+                       @endforeach
                      </tbody>
                    </table>
 
            </div>
          </div>
          </div>
-
-       <div class="six wide column">
+       <div class="eight wide column">
          <div class="ui segment">
          <div class="ui header">
            Versões de trabalhos
@@ -111,38 +94,6 @@
            </div>
          </div>
          </div>
-       <div class="four wide column">
-         <div class="ui segment">
-           <div class="ui header">
-              Dificuldadades do {{$estudante->ultimo_nome}}
-           </div>
-           <divvalue="content">
-           <div class="ui styled fluid accordion">
-           <div class="active title">
-             <i class="dropdown icon"></i>
-             Metodolofia de Invesntiigação
-           </div>
-           <div class="active content">
-             <p>Por onde começar com a pesquisa</p>
-           </div>
-           <div class="title">
-             <i class="dropdown icon"></i>
-             Uso de ferramentas de TI
-           </div>
-           <div class="content">
-             <p>Paginação diferente</p>
-           </div>
-           <div class="title">
-             <i class="dropdown icon"></i>
-             Duvidas técnicas?
-           </div>
-           <div class="content">
-             <p>Modelo de arquitectura duma aplicação</p>
-          </div>
-      </div>
-           </div>
-         </div>
-
   </div>
 </div>
 @endsection
@@ -150,4 +101,36 @@
 $('.ui.accordion')
   .accordion()
 ;
+function model() {
+  $('.ui.small.modal')
+.modal('show');
+}
 </script>
+<div class="ui small modal" id="temas">
+  <i class="close icon"></i>
+  <div class="header">Registo do tema</div>
+  <div class="content">
+    <form class="ui form" method="post" action="{{url('/feuem/'.$departamento->sigla.'/'.$estudante->curso->id.'/estudantes/'.$estudante->id.'/notificacao_interveniente')}}">
+      {{csrf_field()}}
+      <input type="hidden" name="supervisao_id" value="{{$supervisao->id}}">
+        <div class="field">
+          <label>Notificar</label>
+          <select class="ui fluid search dropdown" name="destinatario">
+            <option value="0">Escolha a que notificar</option>
+            <option value="estudante">Estudante: {{$supervisao->estudante->primeiro_nome.' '.$supervisao->estudante->ultimo_nome}}</option>
+            <option value="supervisor">Supervisor: {{$supervisao->docente->primeiro_nome.' '.$supervisao->docente->ultimo_nome}}</option>
+            <option value="-1">Ambos</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Estudante</label>
+          <textarea class="ui fluid search dropdown" name="mensagem">
+          </textarea>
+        </div>
+
+        <div class="field">
+          <button type="submit" class="fluid ui green button" onsubmit="">Notificar</button>
+        </div>
+      </form>
+    </div>
+  </div>

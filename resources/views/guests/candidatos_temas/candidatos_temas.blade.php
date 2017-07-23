@@ -104,6 +104,12 @@ function model(tema) {
         <textarea class="ui fluid search dropdown" name="descricao_do_problema" placeholder="Faça uma descrição sucinta sobre o problema que pretende resolver">
         </textarea>
       </div>
+      <div class="field">
+            <label for="file" class="ui icon button">
+                <i class="Upload icon"></i>
+                Anexo 5 em pdf</label>
+            <input type="file" id="file" style="display:none" name="file">
+      </div>
         <div class="field">
           <button type="submit" class="fluid ui green button" onsubmit="">Gravar</button>
         </div>
