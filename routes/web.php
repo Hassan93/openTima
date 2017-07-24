@@ -109,5 +109,5 @@ Route::post('/feng/supervisores/{id}/meus_temas/create','Supervisao\SupervisorCo
 
 //Rotas públicas
 Route::get('/feng/propostas_de_temas','Guests\CandidatosTemaController@lista_de_temas');
-Route::post('/feng/propostas_de_temas/candidatar-se/{tema_id}','Guests\CandidatosTemaController@candidatar_se_tema');
+Route::post('/feng/propostas_de_temas/candidatar-se','Guests\CandidatosTemaController@candidatar_se_tema');
 Route::get('/feng/monografias','Guests\MonografiasTemaController@monografias');

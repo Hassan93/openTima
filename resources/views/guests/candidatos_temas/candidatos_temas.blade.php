@@ -82,7 +82,7 @@ function model(tema) {
   <i class="close icon"></i>
   <div class="header" id="proposta_do_tema"></div>
   <div class="content">
-    <form class="ui form" action="{{url('/feng/propostas_de_temas/candidatar-se/'.$tema->id)}}" method="post">
+    <form class="ui form" action="{{url('/feng/propostas_de_temas/candidatar-se')}}" method="post">
         {{ csrf_field() }}
         <input type="hidden" name="tema_id" id="tema_id" >
         <div class="field">

@@ -40,7 +40,7 @@ class Helpers {
 	********************************/
 
 	// Send the welcome email to the user
-	static function sendWelcomeMail(User $docente) {
+	static function sendWelcomeMail(Docente $docente) {
 		$data = [
 				'to' 	=> $docente->email,
 				'name' 	=> $docente->primeiro_nome.' '.$docente->ultimo_nome,
