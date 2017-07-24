@@ -38,6 +38,9 @@ Route::get('/logout', 'Usuarios\UsuarioController@logout');
 Route::get('/feuem/{sigla}', 'chefe_depto\HomeController@home');
 Route::get('/feuem/{sigla}/propostas_de_temas', 'chefe_depto\HomeController@propostas_de_temas');
 Route::get('/feuem/{sigla}/propostas_de_temas/{proposta_tema_id}', 'chefe_depto\Proposta_temaController@propostas_de_temas_show');
+Route::get('/feuem/{sigla}/propostas_de_temas/{id}/validacao/{candidato}', 'chefe_depto\Proposta_temaController@validacao');
+Route::post('/feuem/{sigla}/propostas_de_temas/{id}/validacao/{candidato_ID}', 'chefe_depto\Proposta_temaController@alocacao');
+
 Route::post('/feuem/{sigla}/marcacao_de_defesa', 'chefe_depto\HomeController@marcacao_de_defesa');
 
 Route::get('/feuem/{sigla}/estatisticas', 'chefe_depto\EstatisticasController@estatisticas'); //

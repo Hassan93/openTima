@@ -11,8 +11,10 @@
 $(document).ready(function() {
 $('#example').DataTable();
 });
-function model(proposta_tema) {
+function model(proposta_tema, candidato) {
   document.getElementById("proposta_tema_id").value=proposta_tema.id;
+  document.getElementById("candidato_tema_id").value=candidato.id;
+
   $('.ui.mini.modal')
 .modal('show');
 }
@@ -49,7 +51,7 @@ function model(proposta_tema) {
           </td>
           </td>
           <td class="right aligned">
-            <button class="ui teal basic button" onclick="model({{$proposta_tema}})"><i class="check icon"></i>Validar</button>
+            <a class="ui teal basic button" href="{{url('/feuem/'.$departamento->sigla.'/propostas_de_temas/'.$proposta_tema->id.'/validacao/'.$candidato->id)}}"><i class="check icon"></i>Validar</a>
          </td>
        </tr>
        @endforeach
@@ -62,11 +64,13 @@ function model(proposta_tema) {
 
 <div class="ui mini modal">
   <i class="close icon"></i>
-  <div class="header">Validar a acta</div>
+  <div class="header">Aprovar a candidatura</div>
   <div class="content">
-    <form class="ui form" action="" method="post">
+    <form class="ui form" action="{{url('/feuem/'.$departamento.'/propostas_de_temas/validacao')}}" method="post">
         {{ csrf_field() }}
         <input type="hidden" name="proposta_tema_id" id="proposta_tema_id" >
+        <input type="hidden" name="candidato_tema_id" id="candidato_tema_id" >
+
         <div class="inline fields">
           <label for="">Validação da acta</label>
           <div class="field">

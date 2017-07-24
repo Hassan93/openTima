@@ -39,15 +39,13 @@
       </tr>
     </thead>
     <tbody>
-      @foreach($temas as $tema)
+      @foreach($supervisaos as $supervisao)
       <tr>
         <td>
-          <img class="ui avatar image" src="{{ App\User::get_gravatar($tema->estudante->email) }}">
-          {{$tema->estudante->primeiro_nome.' '.$tema->estudante->ultimo_nome}}
+          <img class="ui avatar image" src="{{ App\User::get_gravatar($supervisao->estudante->email) }}">
+          {{$supervisao->estudante->primeiro_nome.' '.$supervisao->estudante->ultimo_nome}}
         </td>
-        <td>{{$tema->referencia}}</td>
-        @foreach($tema->supervisaos as $supervisao)
-        @if($supervisao->papel == 'supervisor')
+        <td>{{$supervisao->tema->referencia}}</td>
           <td>
             <img class="ui avatar image" src="{{ App\User::get_gravatar($supervisao->docente->email) }}">
             {{$supervisao->docente->primeiro_nome.' '.$supervisao->docente->ultimo_nome}}
@@ -57,13 +55,12 @@
                 <div class="bar">{{$supervisao->progresso.'%'}}</div>
               </div><div class="progress"></div>
           </td>
-        @endif
-        @endforeach
+
         <td class="right aligned">
           <div class="ui animated fade button" tabindex="0">
             <div class="visible content">Visualizar</div>
             <div class="hidden content">
-              <a href="{{url('/feuem/'.$curso->departamento->sigla.'/'.$curso->id.'/estudantes/'.$tema->estudante->id)}}"><i class="unhide icon"></i></a>
+              <a href="{{url('/feuem/'.$curso->departamento->sigla.'/'.$curso->id.'/estudantes/'.$supervisao->estudante->id)}}"><i class="unhide icon"></i></a>
             </div>
           </div>
         </td>

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Proposta_tema extends Model
 {
 protected $table = 'proposta_temas';
-protected $filable =['designacao','descricao'];
+protected $fillable =['designacao','descricao','estado'];
 
   public function area()
   {

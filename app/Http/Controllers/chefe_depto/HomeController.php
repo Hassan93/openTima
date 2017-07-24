@@ -29,9 +29,10 @@ class HomeController extends Controller
       $departamento = Departamento::where('sigla', '=', $sigla)->first();
       $curso = Curso::find($id);
       $temas = Tema::orderBy('id', 'desc')->get();
+      $supervisaos = Supervisao::all();
 
     return view('departamento.cursos.home')->withCurso($curso)
-                                           ->withTemas($temas)->withDepartamento($departamento);
+                                           ->withTemas($temas)->withDepartamento($departamento)->withSupervisaos($supervisaos);
     }
 
     public function propostas_de_temas($sigla)
