@@ -37,8 +37,10 @@ class TemasController extends Controller
     public function tema_supervisor($sigla, $curso_id, $tema_id)
     {
       $tema = Tema::find($tema_id);
+      $departamento = Departamento::where('sigla','=',$sigla);
 
-      return view('departamento.temas.show')->withTema($tema);
+
+      return view('departamento.temas.show')->withTema($tema)->withDepartamento($departamento);
     }
     public function tema_supervisor_save(Request $request, $sigla, $curso_id, $tema_id)
     {
