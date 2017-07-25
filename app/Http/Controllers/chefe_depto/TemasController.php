@@ -10,6 +10,7 @@ use App\Estudante;
 use App\Curso;
 use App\Supervisao;
 use App\Docente;
+use App\Departamento;
 use App\Helpers\Helpers;
 use Sentinel;
 
@@ -37,7 +38,7 @@ class TemasController extends Controller
     public function tema_supervisor($sigla, $curso_id, $tema_id)
     {
       $tema = Tema::find($tema_id);
-      $departamento = Departamento::where('sigla','=',$sigla);
+      $departamento = Departamento::where('sigla','=',$sigla)->first();
 
 
       return view('departamento.temas.show')->withTema($tema)->withDepartamento($departamento);

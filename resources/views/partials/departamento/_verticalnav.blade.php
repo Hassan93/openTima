@@ -11,7 +11,7 @@
     <div class="ui input"><input placeholder="Search..." type="text"></div>
   </div>
   <a class="item">
-    <i class="grid layout icon"></i> Dashboard
+    <i class="grid layout icon"></i> Visão detalhada
   </a>
   <a class="item">
       Notificações<i class="mail outline icon"></i>

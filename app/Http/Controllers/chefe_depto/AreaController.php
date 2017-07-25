@@ -31,7 +31,7 @@ class AreaController extends Controller
       $area = Area::find($area_id);
       $curso = Curso::find($curso_id);
       $docentes = Docente::where('departamento_id','=', $curso->departamento->id)->get();
-      $departamento = Departamento::where('sigla','=',$sigla);
+      $departamento = Departamento::where('sigla','=',$sigla)->first();
 
 
       return view('departamento.areas.show')->withDocentes($docentes)

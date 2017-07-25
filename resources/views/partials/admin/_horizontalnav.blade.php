@@ -2,9 +2,9 @@
   <div class="ui container">
     <a href="#" class="header item">
       <i class="bar chart icon"></i>
-         Dashboard
+         Visão detalhada
     </a>
-    <a href="#" class="active item">Home</a>
+    <a href="#" class="active item">Inicial</a>
     <div class="ui simple dropdown item">
       Cursos <i class="dropdown icon"></i>
       <div class="menu">
