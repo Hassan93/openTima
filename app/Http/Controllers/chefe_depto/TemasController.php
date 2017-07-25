@@ -75,7 +75,7 @@ class TemasController extends Controller
 
                       $role = Sentinel::findRoleBySlug('estudante');
                       $role->users()->attach($user);
-                      Helpers::sendProjectInviteMail($user->email, $tema->referencia, $supervisor);
+                  //    Helpers::sendProjectInviteMail($user->email, $tema->referencia, $supervisor);
 
         $user= Sentinel::registerAndActivate([
                         'email'      => $supervisor->email,
@@ -88,7 +88,7 @@ class TemasController extends Controller
 
                       $role = Sentinel::findRoleBySlug('docente');
                       $role->users()->attach($user);
-                      Helpers::sendWelcomeMail($user);
+                //      Helpers::sendWelcomeMail($user);
 
 
       return redirect(url('/feuem/'.$curso->departamento->sigla.'/'. $curso->id));
