@@ -54,8 +54,8 @@ class ActasController extends Controller
           }else {
             Session::flash('error','Adicione um ficheiro');
           }
-          $mensagem = 'Caro supervisor, '.$supervisao->estudante->primeiro_nome.' submeteu nova acta! Para validá-la acede à sua conta no opentima';
-          Helpers::enviar_sms_teste($supervisao->docente->celular, $mensagem);
+          // $mensagem = 'Caro supervisor, '.$supervisao->estudante->primeiro_nome.' submeteu nova acta! Para validá-la acede à sua conta no opentima';
+          // Helpers::enviar_sms_teste($supervisao->docente->celular, $mensagem);
           return redirect(url('/feng/estudantes/'.$supervisao->id.'/actas'));
 
     }

@@ -49,8 +49,8 @@ class DuvidasController extends Controller
         $categoria = Categoria::find($categoria_ids[$i]);
         $duvida->categorias()->attach($categoria);
       }
-      $mensagem = 'Caro supervisor, '.$supervisao->estudante->primeiro_nome.' submeteu uma dúvida! Para visualizá-la, acede à sua conta no opentima';
-      Helpers::enviar_sms_teste($supervisao->docente->celular, $mensagem);
+      // $mensagem = 'Caro supervisor, '.$supervisao->estudante->primeiro_nome.' submeteu uma dúvida! Para visualizá-la, acede à sua conta no opentima';
+      // Helpers::enviar_sms_teste($supervisao->docente->celular, $mensagem);
       return redirect(url('/feng/estudantes/'.$supervisao_id.'/duvidas'));
     }
 

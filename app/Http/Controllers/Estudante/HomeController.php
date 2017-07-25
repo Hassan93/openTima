@@ -80,13 +80,13 @@ class HomeController extends Controller
         }else {
           Session::flash('error','Adicione um ficheiro');
         }
-        $mensagem_supervisor = 'Caro supervisor, '.$supervisao->estudante->primeiro_nome.' submeteu o relatório final! Aguarda-se parecer';
-
-        $mensagem_chefe = 'Caro Chefe do '.$supervisao->docente->departamento->sigla.', o estudante '.$supervisao->estudante->primeiro_nome.', com ref. do tema: '.$supervisao->tema->referencia.', submeteu o relatório final! Por agora aguarda-se o relatorio do supervisor';
-
-        Helpers::enviar_sms_teste($supervisao->docente->celular, $mensagem_supervisor); // Notifica o supervisor
-
-        Helpers::enviar_sms_teste($supervisao->departamento->chefe->celular, $mensagem_chefe); //Notifica o chefe do departamento
+        // $mensagem_supervisor = 'Caro supervisor, '.$supervisao->estudante->primeiro_nome.' submeteu o relatório final! Aguarda-se parecer';
+        //
+        // $mensagem_chefe = 'Caro Chefe do '.$supervisao->docente->departamento->sigla.', o estudante '.$supervisao->estudante->primeiro_nome.', com ref. do tema: '.$supervisao->tema->referencia.', submeteu o relatório final! Por agora aguarda-se o relatorio do supervisor';
+        //
+        // Helpers::enviar_sms_teste($supervisao->docente->celular, $mensagem_supervisor); // Notifica o supervisor
+        //
+        // Helpers::enviar_sms_teste($supervisao->departamento->chefe->celular, $mensagem_chefe); //Notifica o chefe do departamento
 
 Session::flash('success','Parabéns, a sua monografia foi partilhada com o supervisor e o departamento');
         return redirect(url('/feng/estudantes/'.$supervisao->id));

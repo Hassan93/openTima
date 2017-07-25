@@ -64,9 +64,10 @@ class HomeController extends Controller
 
       $mensagem_oponente = 'Caro Docente, está designada para opor no dia'.$defesa->data.' pelas '.$defesa->hora.', a defesa de trabalho com tema da referencia:'.$supervisao->tema->referencia;
 
-      Helpers::enviar_sms_teste($supevisao->docente->celular, $mensagem_supervisor); //Notifica-se ao supervisor
-      Helpers::enviar_sms_teste($supevisao->estudante->celular, $mensagem_estudante); //Notifica-se ao estudante
-      Helpers::enviar_sms_teste($supevisao->oponente->celular, $mensagem_oponente); //Notifica-se ao oponente
+      Helpers::notificar_utilizadores(Sentinel::findByCredentials(['login' => $supervisao->docente->email]), $mensagem_supervisor); //Notifica-se ao supervisor
+      Helpers::notificar_utilizadores(Sentinel::findByCredentials(['login' => $supervisao->estudante->email]), $mensagem_estudante); //Notifica-se ao supervisor
+      Helpers::notificar_utilizadores(Sentinel::findByCredentials(['login' => $oponente->email]), $mensagem_supervisor); //Notifica-se ao supervisor
+
     Session::flash('success','Foram notificados todos envolvidos na defesa');
 
     return redirect(url('/feuem/'.$departamento->sigla));

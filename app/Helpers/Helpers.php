@@ -52,6 +52,16 @@ class Helpers {
 		});
 	}
 
+	static function notificar_utilizadores(User $docente, $mensagem) {
+
+		$data = ['to' => $user->email ];
+
+		Mail::send('emails.welcome', ['project_url' => ' ', 'mensagem' => $mensagem] , function($message) use ($data) {
+			$message->from(getenv('MAIL_FROM'), getenv('MAIL_FROM_NAME'));
+			$message->to($data['to'], '')->subject('Marcação da Defesa');
+		});
+	}
+
 	/** Sends password changed email **/
 
 	/** Sends account deletion email **/

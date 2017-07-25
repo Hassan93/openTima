@@ -104,6 +104,6 @@ class Proposta_temaController extends Controller
                     Helpers::sendProjectInviteMail($user->email, $tema->referencia, $supervisor);
 
                     $mensagem = 'Caro docente, foi designado para supervisionar um estudante com tema cuja referencia é:'.$tema->referencia;
-                    Helpers::enviar_sms_teste($supervisor->celular, $mensagem);
+              //      Helpers::enviar_sms_teste($supervisor->celular, $mensagem);
   }
 }
